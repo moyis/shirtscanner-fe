@@ -3,6 +3,7 @@ export default {
   ignoredRouteFiles: ["**/.*"],
   tailwind: true,
   postcss: true,
+  serverModuleFormat: "cjs"
   // appDirectory: "app",
   // assetsBuildDirectory: "public/build",
   // publicPath: "/build/",

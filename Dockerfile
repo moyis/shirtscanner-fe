@@ -1,7 +1,7 @@
 # syntax = docker/dockerfile:1
 
 # Adjust BUN_VERSION as desired
-ARG BUN_VERSION=1.0.15
+ARG BUN_VERSION=1.0.21
 FROM oven/bun:${BUN_VERSION}-slim as base
 
 LABEL fly_launch_runtime="Remix"
@@ -21,7 +21,7 @@ RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential node-gyp pkg-config python-is-python3
 
 # Install node modules
-COPY --link bun.lockb package-lock.json package.json ./
+COPY --link bun.lockb package.json ./
 RUN bun install
 
 # Update nodejs version
@@ -37,25 +37,14 @@ RUN apt-get install nodejs -y
 COPY --link . .
 
 # Build application
-RUN bun run build
+RUN bun run --bun build
 
 # Remove development dependencies
 RUN rm -rf node_modules && \
     bun install --ci
 
-
 # Final stage for app image
 FROM base
-
-# Update nodejs version
-ARG NODE_MAJOR=21
-RUN apt update
-RUN apt-get install -y ca-certificates curl gnupg
-RUN mkdir -p /etc/apt/keyrings
-RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
-RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_${NODE_MAJOR}.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list
-RUN apt-get update
-RUN apt-get install nodejs -y
 
 # Copy built application
 COPY --from=build /app /app

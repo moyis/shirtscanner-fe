@@ -27,6 +27,7 @@ jobs:
         with:
           push: false
           tags: registry.fly.io/shirtscanner-fe:${{ github.sha }}
+          load: true
       
       - name: Deploy
         env:

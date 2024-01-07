@@ -1,7 +1,7 @@
 # syntax = docker/dockerfile:1
 
 # Adjust NODE_VERSION as desired
-FROM node:20.9-bookworm-slim as base
+FROM node:21.5-bookworm-slim as base
 
 LABEL fly_launch_runtime="Remix"
 

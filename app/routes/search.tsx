@@ -1,5 +1,6 @@
 import { json, LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
 import { useLoaderData, useSearchParams } from "@remix-run/react";
+import posthog from "posthog-js";
 import Header from "~/components/header";
 import { ProductCard } from "~/components/product-card";
 import {
@@ -67,7 +68,13 @@ export async function loader({ request }: LoaderFunctionArgs) {
   const { searchParams } = new URL(request.url);
   const q = searchParams.get("q");
   if (!q) return json([]);
-  return await fetch(`${process.env.SHIRTSCANNER_BE}/v1/products?q=${q}`);
+  const response = await fetch(`${process.env.SHIRTSCANNER_BE}/v1/products?q=${q}`);
+  posthog.capture("search", { 
+    'query': q,
+    'response': response
+   });
+
+  return response
 }
 
 export default function Index() {

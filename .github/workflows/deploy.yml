@@ -1,5 +1,6 @@
 on: 
   push:
+    main
 
 name: Deploy
 

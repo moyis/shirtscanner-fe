@@ -2,7 +2,7 @@
 
 # Adjust NODE_VERSION as desired
 ARG NODE_VERSION=20.6.1
-FROM node:${NODE_VERSION}-slim as base
+FROM node:${NODE_VERSION}-bookworm-slim as base
 
 LABEL fly_launch_runtime="Remix"
 

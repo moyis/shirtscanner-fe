@@ -1,13 +1,5 @@
-import type { MetaFunction } from "@remix-run/node";
 import Header from "~/components/header";
 import { Input } from "~/components/ui/input";
-
-export const meta: MetaFunction = () => {
-  return [
-    { title: "Find Affordable Football Shirts Online - Best Deals from Top Chinese Providers" },
-    { name: "description", content: "Explore a vast collection of cheap football shirts from multiple trusted Chinese providers on our website. Discover unbeatable prices and a wide range of options. Shop now for the best deals on quality jerseys for your favorite teams." },
-  ];
-};
 
 export default function Index() {
   return (
@@ -24,7 +16,7 @@ export default function Index() {
             </h2>
           </div>
           <p className="mx-auto mt-4 max-w-2xl text-l text-muted-foreground">
-            Uncover athletic styles across multiple Top Chinese Retailers
+            Explore, Compare, and Find the Best Sports Clothes in China
           </p>
           <div>
             <form method="get" action="/search">

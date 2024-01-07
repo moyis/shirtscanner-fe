@@ -1,5 +1,5 @@
 import Header from "~/components/header";
-import { Input } from "~/components/ui/input";
+import SearchBar from "~/components/search-bar";
 
 export default function Index() {
   return (
@@ -18,18 +18,11 @@ export default function Index() {
           <p className="mx-auto mt-4 max-w-2xl text-l text-muted-foreground">
             Explore, Compare, and Find the Best Sports Clothes in China
           </p>
-          <div>
-            <form method="get" action="/search">
-              <div className="flex pt-10 px-48 w-full">
-                <Input
-                  name="q"
-                  type="text"
-                  placeholder="Find your favourite team..."
-                  required
-                />
-              </div>
-            </form>
-          </div>
+        </div>
+      </section>
+      <section className="relative text-center">
+        <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-24">
+          <SearchBar />
         </div>
       </section>
     </>

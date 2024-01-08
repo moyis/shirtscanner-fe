@@ -1,6 +1,7 @@
 import { PostHog } from 'posthog-node'
 
 let posthogClient: PostHog | null = null
+
 const key = 'phc_sZx5YRX7ibOByVigeStL2i0VUrRamaePqRKvGob0ZFZ'
 
 export default function PostHogClient() {
@@ -9,6 +10,7 @@ export default function PostHogClient() {
       host: 'https://eu.posthog.com'
     })
   }
+  posthogClient.debug(true)
   return posthogClient
 }
 

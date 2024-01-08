@@ -100,6 +100,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
   const response = await fetch(
     `${process.env.SHIRTSCANNER_BE}/v1/products?q=${q}`
   );
+
   posthog.capture({
     distinctId: getDistinctId(request),
     event: 'search',

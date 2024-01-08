@@ -1,6 +1,5 @@
 import { json, LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
 import { useLoaderData, useSearchParams } from "@remix-run/react";
-import { posthog } from "posthog-js";
 import Header from "~/components/header";
 import { ProductCard } from "~/components/product-card";
 import SearchBar from "~/components/search-bar";
@@ -10,9 +9,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "~/components/ui/accordion";
-import { Input } from "~/components/ui/input";
 import { ScrollArea, ScrollBar } from "~/components/ui/scroll-area";
 import { Separator } from "~/components/ui/separator";
+import PostHogClient, { getDistinctId } from "~/services/posthog-client";
 
 export interface Product {
   name: string;
@@ -94,23 +93,28 @@ export const createProductCards = (products: Array<Product>) => {
 };
 
 export async function loader({ request }: LoaderFunctionArgs) {
+  const posthog = PostHogClient()
   const { searchParams } = new URL(request.url);
   const q = searchParams.get("q");
   if (!q) return json([]);
   const response = await fetch(
     `${process.env.SHIRTSCANNER_BE}/v1/products?q=${q}`
   );
+  posthog.capture({
+    distinctId: getDistinctId(request),
+    event: 'search',
+    properties: {
+      query: searchParams.get("q"),
+      response: response,
+    }
+  });
+
   return response;
 }
 
 export default function Index() {
   const providerResults: Array<ProviderResult> = useLoaderData<typeof loader>();
   const [searchParams] = useSearchParams();
-  posthog.capture("search", {
-    query: searchParams.get("q"),
-    response: providerResults,
-  });
-
   return (
     <>
       <Header />

@@ -1,6 +1,6 @@
 import { json, LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
 import { useLoaderData, useSearchParams } from "@remix-run/react";
-import posthog from "posthog-js";
+import { posthog } from "posthog-js";
 import Header from "~/components/header";
 import { ProductCard } from "~/components/product-card";
 import SearchBar from "~/components/search-bar";

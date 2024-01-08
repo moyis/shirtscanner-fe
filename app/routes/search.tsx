@@ -100,17 +100,17 @@ export async function loader({ request }: LoaderFunctionArgs) {
   const response = await fetch(
     `${process.env.SHIRTSCANNER_BE}/v1/products?q=${q}`
   );
-  posthog.capture("search", {
-    query: q,
-    response: response,
-  });
-
   return response;
 }
 
 export default function Index() {
   const providerResults: Array<ProviderResult> = useLoaderData<typeof loader>();
   const [searchParams] = useSearchParams();
+  posthog.capture("search", {
+    query: searchParams.get("q"),
+    response: providerResults,
+  });
+
   return (
     <>
       <Header />

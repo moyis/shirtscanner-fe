@@ -7,11 +7,10 @@ const key = 'phc_sZx5YRX7ibOByVigeStL2i0VUrRamaePqRKvGob0ZFZ'
 export default function PostHogClient() {
   if (!posthogClient) {
     posthogClient = new PostHog(key, {
-      host: 'https://eu.posthog.com'
-    })
+      host: 'https://app.posthog.com',
+    });
   }
-  posthogClient.debug(true)
-  return posthogClient
+  return posthogClient;
 }
 
 export function getDistinctId(request: Request) {

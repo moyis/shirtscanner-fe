@@ -93,24 +93,23 @@ export const createProductCards = (products: Array<Product>) => {
 };
 
 export async function loader({ request }: LoaderFunctionArgs) {
-  const posthog = PostHogClient()
   const { searchParams } = new URL(request.url);
   const q = searchParams.get("q");
-  if (!q) return json([]);
-  const response = await fetch(
-    `${process.env.SHIRTSCANNER_BE}/v1/products?q=${q}`
-  );
+  if (!q) throw new Response("Not Found", { status: 404 });
+  const response = await fetch(`${process.env.SHIRTSCANNER_BE}/v1/products?q=${q}`)
+  const responseBody: Array<ProviderResult> = await response.json()
+  const distinctId = getDistinctId(request);
+ const phClient = PostHogClient();
+ phClient.capture({
+   distinctId: distinctId,
+   event: 'search-performed',
+   properties: {
+    query: q.toUpperCase(),
+    response: responseBody,
+   }
+ });
 
-  posthog.capture({
-    distinctId: getDistinctId(request),
-    event: 'search',
-    properties: {
-      query: searchParams.get("q"),
-      response: response,
-    }
-  });
-
-  return response;
+ return responseBody;
 }
 
 export default function Index() {

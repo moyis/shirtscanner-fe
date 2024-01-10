@@ -8,7 +8,7 @@ export default function Header() {
   };
 
   const handleClickContribute = () => {
-    posthog.capture("about-me-button-contribute");
+    posthog.capture("contribute-button-clicked");
   };
 
   return (

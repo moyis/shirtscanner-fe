@@ -14,5 +14,5 @@ startTransition(() => {
     <StrictMode>
       <RemixBrowser />
     </StrictMode>
-  )
-})
+  );
+});

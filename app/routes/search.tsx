@@ -96,20 +96,22 @@ export async function loader({ request }: LoaderFunctionArgs) {
   const { searchParams } = new URL(request.url);
   const q = searchParams.get("q");
   if (!q) throw new Response("Not Found", { status: 404 });
-  const response = await fetch(`${process.env.SHIRTSCANNER_BE}/v1/products?q=${q}`)
-  const responseBody: Array<ProviderResult> = await response.json()
+  const response = await fetch(
+    `${process.env.SHIRTSCANNER_BE}/v1/products?q=${q}`
+  );
+  const responseBody: Array<ProviderResult> = await response.json();
   const distinctId = getDistinctId(request);
- const phClient = PostHogClient();
- phClient.capture({
-   distinctId: distinctId,
-   event: 'search-performed',
-   properties: {
-    query: q.toUpperCase(),
-    response: responseBody,
-   }
- });
+  const phClient = PostHogClient();
+  phClient.capture({
+    distinctId: distinctId,
+    event: "search-performed",
+    properties: {
+      query: q.toUpperCase(),
+      response: responseBody,
+    },
+  });
 
- return responseBody;
+  return responseBody;
 }
 
 export default function Index() {
@@ -125,7 +127,8 @@ export default function Index() {
               {searchParams.get("q")}
             </h1>{" "}
             <h2 className="order-first font-medium tracking-wide">
-              Found {providerResults.flatMap((it) => it.products).length} results for
+              Found {providerResults.flatMap((it) => it.products).length}{" "}
+              results for
             </h2>
           </div>
         </div>
@@ -136,7 +139,7 @@ export default function Index() {
         </div>
       </section>
       <div className="px-8">
-      <Separator />
+        <Separator />
       </div>
       <section className="relative px-16">
         <Accordion type="multiple" className="w-full">

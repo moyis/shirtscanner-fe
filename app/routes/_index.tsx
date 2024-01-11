@@ -8,7 +8,7 @@ export default function Index() {
       <section className="relative text-center">
         <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
           <div className="mx-auto flex max-w-3xl flex-col">
-            <h1 className="mt-1 font-extrabold uppercase tracking-tighter sm:text-5xl lg:text-7xl">
+            <h1 className="mt-1 font-extrabold uppercase tracking-tighter text-4xl lg:text-7xl">
               ShirtScanner
             </h1>{" "}
             <h2 className="order-first text-xl font-medium tracking-wide">

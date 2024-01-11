@@ -15,7 +15,7 @@ import PostHogClient, { getDistinctId } from "~/services/posthog-client";
 
 export interface Product {
   name: string;
-  price: string;
+  price: string|null;
   productLink: string;
   imageLink: string;
 }

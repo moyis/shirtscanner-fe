@@ -33,7 +33,7 @@ export function ProductCard({
         </div>
         <div className="space-y-1 text-sm">
           <h3 className="font-medium leading-none">{product.name}</h3>
-          <p className="text-xs text-muted-foreground">{product.price}</p>
+          {product.price ? (<p className="text-xs text-muted-foreground">{product.price}</p>) : (<></>)}          
         </div>
       </a>
     </div>

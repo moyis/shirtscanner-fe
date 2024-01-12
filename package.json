@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "remix dev",
     "start": "remix-serve ./build/index.js",
-    "build": "remix build",
+    "build": "npm run build:remix && npm run build:sitemap",
+    "build:remix": "remix build",
+    "build:sitemap": "remix-sitemap",
     "lint": "npx eslint app",
     "typecheck": "tsc --noEmit"
   },
@@ -41,6 +43,7 @@
     "autoprefixer": "latest",
     "eslint": "^8.38.0",
     "eslint-config-prettier": "^9.0.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.28.1",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-react": "^7.33.2",

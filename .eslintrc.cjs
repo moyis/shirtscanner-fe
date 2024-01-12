@@ -38,6 +38,11 @@ module.exports = {
         react: {
           version: "detect",
         },
+        "import/resolver": {
+          node: {
+            extensions: [".js", ".jsx", ".ts", ".tsx"],
+          },
+        },
         formComponents: ["Form"],
         linkComponents: [
           { name: "Link", linkAttribute: "to" },

@@ -28,7 +28,7 @@ export default function Header() {
                   href="https://cafecito.app/shirtscanner"
                   className="text-sm font-medium transition-colors"
                   target="_blank"
-                  onClick={handleClickContribute}
+                  onClick={handleClickContribute} rel="noreferrer"
                 >
                   Contribute
                 </a>
@@ -36,7 +36,7 @@ export default function Header() {
                   href="https://www.linkedin.com/in/fausto-moya/"
                   className="block px-2 py-1 text-lg"
                   target="_blank"
-                  onClick={handleClickAboutMe}
+                  onClick={handleClickAboutMe} rel="noreferrer"
                 >
                   About Me
                 </a>
@@ -57,7 +57,7 @@ export default function Header() {
             href="https://cafecito.app/shirtscanner"
             className="text-sm font-medium transition-colors"
             target="_blank"
-            onClick={handleClickContribute}
+            onClick={handleClickContribute} rel="noreferrer"
           >
             Contribute
           </a>
@@ -65,7 +65,7 @@ export default function Header() {
             href="https://www.linkedin.com/in/fausto-moya/"
             className="text-sm font-medium transition-colors"
             target="_blank"
-            onClick={handleClickAboutMe}
+            onClick={handleClickAboutMe} rel="noreferrer"
           >
             About Me
           </a>

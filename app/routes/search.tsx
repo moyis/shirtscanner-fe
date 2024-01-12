@@ -1,4 +1,4 @@
-import { json, LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
+import { HeadersFunction, json, LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
 import { useLoaderData, useSearchParams } from "@remix-run/react";
 import Header from "~/components/header";
 import { ProductCard } from "~/components/product-card";
@@ -80,7 +80,7 @@ export const createProductCards = (products: Array<Product>) => {
     <div className="flex space-x-4 pb-4">
       {products.map((product) => (
         <ProductCard
-          key={product.name}
+          key={product.productLink}
           product={product}
           className="w-[150px]"
           aspectRatio="square"

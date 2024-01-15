@@ -22,7 +22,7 @@
     "@remix-run/serve": "^2.5.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
-    "isbot": "^4.3.0",
+    "isbot": "^4.4.0",
     "lucide-react": "^0.309.0",
     "posthog-js": "^1.98.2",
     "posthog-node": "^3.5.0",

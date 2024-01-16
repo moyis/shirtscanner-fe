@@ -1,4 +1,4 @@
-import { HeadersFunction, json, LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
+import { LoaderFunctionArgs } from "@remix-run/node";
 import { useLoaderData, useSearchParams } from "@remix-run/react";
 import Header from "~/components/header";
 import { ProductCard } from "~/components/product-card";
@@ -12,10 +12,12 @@ import {
 import { ScrollArea, ScrollBar } from "~/components/ui/scroll-area";
 import { Separator } from "~/components/ui/separator";
 import PostHogClient, { getDistinctId } from "~/services/posthog-client";
+import { useEffect, useState } from "react";
+import { Progress } from "~/components/ui/progress";
 
 export interface Product {
   name: string;
-  price: string|null;
+  price: string | null;
   productLink: string;
   imageLink: string;
 }
@@ -96,10 +98,6 @@ export async function loader({ request }: LoaderFunctionArgs) {
   const { searchParams } = new URL(request.url);
   const q = searchParams.get("q");
   if (!q) throw new Response("Not Found", { status: 404 });
-  const response = await fetch(
-    `${process.env.SHIRTSCANNER_BE}/v1/products?q=${q}`
-  );
-  const responseBody: Array<ProviderResult> = await response.json();
   const distinctId = getDistinctId(request);
   const phClient = PostHogClient();
   phClient.capture({
@@ -107,16 +105,39 @@ export async function loader({ request }: LoaderFunctionArgs) {
     event: "search-performed",
     properties: {
       query: q.toUpperCase(),
-      response: responseBody,
     },
   });
-
-  return responseBody;
+  
+  return process.env.SHIRTSCANNER_BE
 }
 
+interface ServerSearchEvent {
+  total: number;
+  processed: number;
+  data: ProviderResult;
+}
+
+
 export default function Index() {
-  const providerResults: Array<ProviderResult> = useLoaderData<typeof loader>();
-  const [searchParams] = useSearchParams();
+  const backendUrl = useLoaderData<string>()
+  const [params] = useSearchParams();
+  const q = params.get("q");
+  const [progress, setProgress] = useState<number>(0)
+  const [providerResults, setProviderResults] = useState<Array<ProviderResult>>([]);
+
+  useEffect(() => {
+    const sse = new EventSource(`${backendUrl}/v1/products/stream?q=${q}`);
+      function getRealtimeData(event: ServerSearchEvent) {
+        setProgress(Math.trunc(event.processed * 100 / event.total));
+        setProviderResults((currentProviderResults) => [...currentProviderResults, event.data])
+      }
+
+      sse.addEventListener("providers", (e) => getRealtimeData(JSON.parse(e.data)));
+      sse.onerror = () => {sse.close()};
+      return () => {sse.close()};
+      }, []);
+
+  const totalProviders = providerResults.length > 0 ? providerResults.flatMap((it) => it.products).length : 0;
   return (
     <>
       <Header />
@@ -124,12 +145,12 @@ export default function Index() {
         <div className="mx-auto max-w-screen-xl px-4 py-4 sm:px-6 sm:py-8 lg:px-8 lg:py-12">
           <div className="mx-auto flex max-w-3xl flex-col">
             <h1 className="mt-1 font-bold uppercase tracking-tighter sm:text-5xl lg:text-7xl">
-              {searchParams.get("q")}
+              {q}
             </h1>{" "}
             <h2 className="order-first font-medium tracking-wide">
-              Found {providerResults.flatMap((it) => it.products).length}{" "}
-              results for
+              Found {totalProviders} results for
             </h2>
+            {progress < 100 ? (<><Progress value={progress}/> {progress}% </>) : (<></>)}
           </div>
         </div>
       </section>
@@ -143,7 +164,7 @@ export default function Index() {
       </div>
       <section className="relative px-16">
         <Accordion type="multiple" className="w-full">
-          {providerResults.map((providerResult) => {
+          {providerResults.filter(provider => provider.products.length > 0).sort((a, b) => (a.products.length > b.products.length) ? -1 : 1).map((providerResult) => {
             return (
               <AccordionItem
                 key={providerResult.providerName}

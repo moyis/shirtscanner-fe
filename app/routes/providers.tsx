@@ -9,7 +9,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "~/components/ui/table";
+} from "../components/ui/table";
 
 export const meta: MetaFunction = () => {
   return [

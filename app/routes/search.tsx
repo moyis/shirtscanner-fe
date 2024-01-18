@@ -122,33 +122,33 @@ export default function Index() {
   const backendUrl = useLoaderData<string>()
   const [params] = useSearchParams();
   const q = params.get("q");
-  const [progress, setProgress] = useState<number>(0)
+  const [total, setTotal] = useState<number>(0)
   const [providerResults, setProviderResults] = useState<Array<ProviderResult>>([]);
 
   useEffect(() => {
     const sse = new EventSource(`${backendUrl}/v1/products/stream?q=${q}`);
       function getRealtimeData(event: ServerSearchEvent) {
-        setProgress(Math.trunc(event.processed * 100 / event.total));
+        setTotal(event.total);
         setProviderResults((currentProviderResults) => [...currentProviderResults, event.data])
       }
-
-      sse.addEventListener("providers", (e) => getRealtimeData(JSON.parse(e.data)));
+      sse.onmessage = (e) => getRealtimeData(JSON.parse(e.data));
       sse.onerror = () => {sse.close()};
       return () => {sse.close()};
       }, []);
 
-  const totalProviders = providerResults.length > 0 ? providerResults.flatMap((it) => it.products).length : 0;
+  const totalProducts = providerResults.length > 0 ? providerResults.flatMap((it) => it.products).length : 0;
+  const progress = Math.trunc(providerResults.length * 100 / total)
   return (
     <>
       <Header />
       <section className="relative text-center">
         <div className="mx-auto max-w-screen-xl px-4 py-4 sm:px-6 sm:py-8 lg:px-8 lg:py-12">
           <div className="mx-auto flex max-w-3xl flex-col">
-            <h1 className="mt-1 font-bold uppercase tracking-tighter sm:text-5xl lg:text-7xl">
+            <h1 className="mt-1 font-bold uppercase tracking-tighter text-4xl lg:text-7xl">
               {q}
             </h1>{" "}
             <h2 className="order-first font-medium tracking-wide">
-              Found {totalProviders} results for
+              Found {totalProducts} results for
             </h2>
             {progress < 100 ? (<><Progress value={progress}/> {progress}% </>) : (<></>)}
           </div>

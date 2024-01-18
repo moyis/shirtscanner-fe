@@ -24,9 +24,12 @@ export default function Header() {
                 <a href="/" className="block px-2 py-1 text-lg">
                   Home
                 </a>
+                <a href="/providers" className="block px-2 py-1 text-lg">
+                  Providers
+                </a>
                 <a
                   href="https://cafecito.app/shirtscanner"
-                  className="text-sm font-medium transition-colors"
+                  className="block px-2 py-1 text-lg"
                   target="_blank"
                   onClick={handleClickContribute} rel="noreferrer"
                 >
@@ -52,6 +55,9 @@ export default function Header() {
         <nav className="mx-6 items-center space-x-4 lg:space-x-6 hidden md:block">
           <a href="/" className="text-sm font-medium transition-colors">
             Home
+          </a>
+          <a href="/providers" className="text-sm font-medium transition-colors">
+            Providers
           </a>
           <a
             href="https://cafecito.app/shirtscanner"

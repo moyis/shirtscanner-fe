@@ -113,7 +113,6 @@ export async function loader({ request }: LoaderFunctionArgs) {
 
 interface ServerSearchEvent {
   total: number;
-  processed: number;
   data: ProviderResult;
 }
 
@@ -123,6 +122,7 @@ export default function Index() {
   const [params] = useSearchParams();
   const q = params.get("q");
   const [total, setTotal] = useState<number>(0)
+  const [done, setDone] = useState<boolean>(false)
   const [providerResults, setProviderResults] = useState<Array<ProviderResult>>([]);
 
   useEffect(() => {

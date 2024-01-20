@@ -27,3 +27,14 @@ test("providers redirects to providers page search", async ({ page }) => {
   await page.getByRole('link', { name: 'Providers' }).click();
   await expect(page).toHaveURL(`/providers`);
 });
+
+test('not found page exists', async ({ page }) => {
+  await page.goto('/this-does-not-exists');
+  await expect(page.getByRole('heading', { name: '404 - Not Found' })).toBeVisible();
+});
+
+test('not found page has a button that redirects to homepage', async ({ page }) => {
+  await page.goto('/this-also-does-not-exists');
+  await page.getByRole('button', { name: 'Go back to homepage' }).click();
+  await expect(page).toHaveURL(`/`);
+});

@@ -11,20 +11,20 @@ test("has title", async ({ page }) => {
 
 test("can search", async ({ page }) => {
   const query = "Argentina";
-  await page.goto("https://www.shirtscanner.com/");
+  await page.goto(baseUrl);
   await page.getByPlaceholder("Find your next shirt...").fill(query);
   await page.getByRole("button", { name: "Search" }).click();
   await expect(page).toHaveURL(`${baseUrl}/search?q=${query}`);
 });
 
 test("has providers", async ({ page }) => {
-  await page.goto("https://www.shirtscanner.com/providers");
+  await page.goto(`${baseUrl}/providers`);
   const rowCount = await page.$$eval(`tr`, rows => rows.length);
   expect(rowCount).toBeGreaterThan(0);
 });
 
 test("providers redirects to providers page search", async ({ page }) => {
-  await page.goto("https://www.shirtscanner.com/");
+  await page.goto(baseUrl);
   await page.getByRole('link', { name: 'Providers' }).click();
   await expect(page).toHaveURL(`${baseUrl}/providers`);
 });

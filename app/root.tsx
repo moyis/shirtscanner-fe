@@ -12,7 +12,7 @@ import {
 } from "@remix-run/react";
 import { useEffect } from "react";
 import { posthog } from "posthog-js";
-import { SpeedInsights } from '@vercel/speed-insights/next';
+import { SpeedInsights } from '@vercel/speed-insights/remix';
 
 import styles from "./tailwind.css";
 

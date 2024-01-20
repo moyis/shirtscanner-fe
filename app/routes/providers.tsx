@@ -14,7 +14,11 @@ import {
 export const meta: MetaFunction = () => {
   return [
     { title: "Discover Top Sports Clothing Providers" },
-    { name: "description", content: "Explore a curated selection of premium sports clothing from our network of connected providers. Find the latest shirts, jerseys, hoodies, and more, all in one convenient place. Elevate your athletic style with our diverse range of offerings. Shop confidently, knowing you have access to the best in sports fashion from trusted providers. Start browsing now for a seamless and enjoyable shopping experience." },
+    {
+      name: "description",
+      content:
+        "Explore a curated selection of premium sports clothing from our network of connected providers. Find the latest shirts, jerseys, hoodies, and more, all in one convenient place. Elevate your athletic style with our diverse range of offerings. Shop confidently, knowing you have access to the best in sports fashion from trusted providers. Start browsing now for a seamless and enjoyable shopping experience.",
+    },
   ];
 };
 
@@ -39,8 +43,8 @@ export default function Index() {
               All our {providers.length} providers
             </h1>{" "}
           </div>
-          <p className="mx-auto mt-4 max-w-2xl text-l text-muted-foreground">
-            We constantly add more providers
+          <p className="mx-auto mt-4 max-w-2xl text-xl text-muted-foreground">
+            We search your shirts in all of them at the same time
           </p>
         </div>
       </section>
@@ -72,6 +76,7 @@ export default function Index() {
           </TableBody>
         </Table>
       </section>
+      <Footer />
     </>
   );
 }

@@ -4,7 +4,7 @@ on:
   deployment_status:
 jobs:
   run-e2es:
-    if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
+    if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success && github.ref != 'ref/head/main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

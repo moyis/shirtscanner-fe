@@ -12,6 +12,7 @@ import {
 } from "@remix-run/react";
 import { useEffect } from "react";
 import { posthog } from "posthog-js";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import styles from "./tailwind.css";
 
@@ -70,6 +71,7 @@ export default function App() {
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
+        <SpeedInsights />
       </body>
     </html>
   );

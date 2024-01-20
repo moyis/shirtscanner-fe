@@ -8,11 +8,12 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
   useLocation,
 } from "@remix-run/react";
 import { useEffect } from "react";
 import { posthog } from "posthog-js";
-import { SpeedInsights } from '@vercel/speed-insights/remix';
+import { SpeedInsights } from "@vercel/speed-insights/remix";
 
 import styles from "./tailwind.css";
 
@@ -45,9 +46,15 @@ export const meta: MetaFunction = () => {
   ];
 };
 
+export const loader = async () => {
+  return process.env.POSTHOG_TOKEN ?? "";
+};
+
 export default function App() {
+  const posthogToken: string = useLoaderData<typeof loader>();
+
   useEffect(() => {
-    posthog.init("phc_sZx5YRX7ibOByVigeStL2i0VUrRamaePqRKvGob0ZFZ", {
+    posthog.init(posthogToken, {
       api_host: "https://app.posthog.com",
       capture_pageview: false,
     });

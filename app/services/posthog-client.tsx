@@ -2,11 +2,11 @@ import { PostHog } from "posthog-node";
 
 let posthogClient: PostHog | null = null;
 
-const key = "phc_sZx5YRX7ibOByVigeStL2i0VUrRamaePqRKvGob0ZFZ";
+const token = process.env.POSTHOG_TOKEN ?? '';
 
 export default function PostHogClient() {
   if (!posthogClient) {
-    posthogClient = new PostHog(key, {
+    posthogClient = new PostHog(token, {
       host: "https://app.posthog.com",
     });
   }
@@ -15,7 +15,7 @@ export default function PostHogClient() {
 
 export function getDistinctId(request: Request) {
   const cookieString = request.headers.get("Cookie") || "";
-  const cookieName = `ph_${key}_posthog`;
+  const cookieName = `ph_${token}_posthog`;
   const cookieMatch = cookieString.match(new RegExp(cookieName + "=([^;]+)"));
   let distinctId;
   if (cookieMatch) {

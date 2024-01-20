@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "remix dev",
     "start": "remix-serve ./build/index.js",
-    "build": "npm run build:remix && npm run build:sitemap",
+    "build": "npm run build:remix",
     "build:remix": "remix build",
     "build:sitemap": "remix-sitemap",
     "lint": "npx eslint app",

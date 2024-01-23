@@ -8,8 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install dependencies
-        run: bun install && bunx playwright install --with-deps
+      - uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
       - name: Run tests
         run: bunx playwright test
         env:

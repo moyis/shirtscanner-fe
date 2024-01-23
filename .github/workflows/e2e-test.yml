@@ -12,7 +12,7 @@ jobs:
         with:
           bun-version: latest
       - name: Install packages
-        run: bun install
+        run: bun install && bunx playwright install --with-deps
       - name: Run tests
         run: bunx playwright test
         env:

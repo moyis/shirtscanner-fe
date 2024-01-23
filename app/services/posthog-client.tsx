@@ -2,7 +2,7 @@ import { PostHog } from "posthog-node";
 
 let posthogClient: PostHog | null = null;
 
-const token = process.env.POSTHOG_TOKEN ?? '';
+const token = process.env.POSTHOG_TOKEN ?? 'undefined';
 
 export default function PostHogClient() {
   if (!posthogClient) {

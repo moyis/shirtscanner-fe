@@ -32,7 +32,7 @@ export const createAccordionContent = (providerResult: ProviderResult) => {
   const text = foundResults ? (
     <>
       We found {providerResult.products.length} products matching your search
-      criteria at {providerResult.providerName}. You can search in provider's
+      criteria at {providerResult.providerName}. You can search in provider&apos;s
       website by clicking{" "}
       <a
         className="underline"
@@ -45,7 +45,7 @@ export const createAccordionContent = (providerResult: ProviderResult) => {
     </>
   ) : (
     <>
-      We haven't found any results for your search. This can be due to the
+      We haven&apos;t found any results for your search. This can be due to the
       search term not being found in their website or them blocking us.
       Nevertheless you can still check in their website by clicking{" "}
       <a
@@ -133,7 +133,7 @@ export default function Index() {
       sse.onmessage = (e) => getRealtimeData(JSON.parse(e.data));
       sse.onerror = () => {sse.close()};
       return () => {sse.close()};
-      }, []);
+      }, [backendUrl, q]);
 
   const totalProducts = providerResults.length > 0 ? providerResults.flatMap((it) => it.products).length : 0;
   const progress = Math.trunc(providerResults.length * 100 / total)

@@ -50,6 +50,40 @@ export const meta: MetaFunction = () => {
   ];
 };
 
+const errorPage = (error: unknown) => {
+  return isRouteErrorResponse(error) ? (
+    <>
+      <Header />
+      <section className="relative text-center">
+        <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
+          <div className="mx-auto flex max-w-3xl flex-col">
+            <h1 className="mt-1 font-extrabold uppercase tracking-tighter text-4xl lg:text-7xl">
+              {error.status} - {error.statusText}
+            </h1>{" "}
+            <h2 className="order-first text-xl font-medium tracking-wide">
+              Ups... Something went wrong
+            </h2>
+          </div>
+          <p className="mx-auto mt-4 max-w-2xl text-l text-muted-foreground">
+            {error.status === 404
+              ? "We were not able to find what you're looking for"
+              : "Please try again. If the error persist please contact for support"}
+          </p>
+        </div>
+      </section>
+      <section className="relative text-center">
+        <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-24">
+          <a href="/">
+            <Button className="">Go back to homepage</Button>
+          </a>
+        </div>
+      </section>
+    </>
+  ) : (
+    <h1>Unknown Error</h1>
+  );
+};
+
 export function ErrorBoundary() {
   const error = useRouteError();
   return (
@@ -60,27 +94,7 @@ export function ErrorBoundary() {
         <Links />
       </head>
       <body>
-        <Header />
-        <section className="relative text-center">
-        <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
-          <div className="mx-auto flex max-w-3xl flex-col">
-            <h1 className="mt-1 font-extrabold uppercase tracking-tighter text-4xl lg:text-7xl">
-             { error.status } - {error.statusText}
-            </h1>{" "}
-            <h2 className="order-first text-xl font-medium tracking-wide">
-              Ups... Something went wrong
-            </h2>
-          </div>
-          <p className="mx-auto mt-4 max-w-2xl text-l text-muted-foreground">
-            {error.status === 404 ? "We were not able to find what you're looking for" : "Please try again. If the error persist please contact for support"}
-          </p>
-        </div>
-      </section>
-      <section className="relative text-center">
-        <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-24">
-        <a href="/"><Button className="">Go back to homepage</Button></a>
-        </div>
-      </section>
+        {errorPage(error)}
         <Scripts />
       </body>
     </html>
@@ -88,7 +102,7 @@ export function ErrorBoundary() {
 }
 
 export const loader = async () => {
-  return process.env.POSTHOG_TOKEN ?? "";
+  return process.env.POSTHOG_TOKEN ?? "undefined";
 };
 
 export default function App() {
@@ -99,7 +113,7 @@ export default function App() {
       api_host: "https://app.posthog.com",
       capture_pageview: false,
     });
-  }, []);
+  }, [posthogToken]);
 
   const location = useLocation();
   useEffect(() => {

@@ -1,5 +1,5 @@
 import { Menu } from "lucide-react";
-import posthog from "posthog-js";
+import { posthog } from "posthog-js";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 
 export default function Header() {

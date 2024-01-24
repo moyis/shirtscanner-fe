@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "remix dev",
     "start": "remix-serve ./build/index.js",
-    "build": "remix build",
+    "build": "remix build --sourcemap && sentry-upload-sourcemaps --org moyaf --project java-spring-boot",
     "lint": "bunx eslint app",
     "test": "bunx playwright test",
     "typecheck": "tsc --noEmit"
@@ -20,6 +20,7 @@
     "@remix-run/node": "^2.5.1",
     "@remix-run/react": "^2.5.1",
     "@remix-run/serve": "^2.5.1",
+    "@sentry/remix": "^7.95.0",
     "@vercel/speed-insights": "^1.0.7",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",

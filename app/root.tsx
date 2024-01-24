@@ -1,3 +1,4 @@
+import { captureRemixErrorBoundaryError, withSentry } from "@sentry/remix";
 import { cssBundleHref } from "@remix-run/css-bundle";
 import type { LinksFunction } from "@remix-run/node";
 import {
@@ -86,6 +87,7 @@ const errorPage = (error: unknown) => {
 
 export function ErrorBoundary() {
   const error = useRouteError();
+  captureRemixErrorBoundaryError(error);
   return (
     <html lang="en">
       <head>
@@ -105,7 +107,7 @@ export const loader = async () => {
   return process.env.POSTHOG_TOKEN ?? "undefined";
 };
 
-export default function App() {
+function App() {
   const posthogToken: string = useLoaderData<typeof loader>();
 
   useEffect(() => {
@@ -138,3 +140,5 @@ export default function App() {
     </html>
   );
 }
+
+export default withSentry(App);

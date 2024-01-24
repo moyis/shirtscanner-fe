@@ -1,6 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import Footer from "~/components/footer";
 import Header from "~/components/header";
 import {
   Table,
@@ -76,7 +75,6 @@ export default function Index() {
           </TableBody>
         </Table>
       </section>
-      <Footer />
     </>
   );
 }

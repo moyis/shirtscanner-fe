@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "@flydotio/dockerfile": "latest",
-    "@playwright/test": "^1.42.0",
+    "@playwright/test": "^1.42.1",
     "@remix-run/dev": "^2.8.0",
     "@types/node": "^20.11.24",
     "@types/react": "^18.2.64",

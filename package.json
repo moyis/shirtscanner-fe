@@ -26,7 +26,7 @@
     "isbot": "^5.1.1",
     "lucide-react": "^0.358.0",
     "posthog-js": "^1.116.2",
-    "posthog-node": "^3.6.3",
+    "posthog-node": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "remix-sitemap": "^3.2.0",

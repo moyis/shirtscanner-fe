@@ -23,7 +23,7 @@
     "@vercel/speed-insights": "^1.0.10",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
-    "isbot": "^5.1.1",
+    "isbot": "^5.1.2",
     "lucide-react": "^0.358.0",
     "posthog-js": "^1.116.2",
     "posthog-node": "^4.0.0",

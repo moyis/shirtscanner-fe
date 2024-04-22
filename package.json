@@ -24,7 +24,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "isbot": "^5.1.2",
-    "lucide-react": "^0.371.0",
+    "lucide-react": "^0.372.0",
     "posthog-js": "^1.116.2",
     "posthog-node": "^4.0.0",
     "react": "^18.2.0",

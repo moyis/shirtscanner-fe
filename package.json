@@ -45,7 +45,7 @@
     "@playwright/test": "^1.46.0",
     "@remix-run/dev": "^2.11.2",
     "@types/node": "^22.3.0",
-    "@types/react": "^18.3.3",
+    "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@types/source-map-support": "^0.5.10",
     "@typescript-eslint/eslint-plugin": "^8.1.0",

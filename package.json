@@ -34,7 +34,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "remix-sitemap": "^3.2.0",
-    "remix-utils": "^7.6.0",
+    "remix-utils": "^8.0.0",
     "source-map-support": "^0.5.21",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",

@@ -1,4 +1,3 @@
-import { cssBundleHref } from "@remix-run/css-bundle";
 import type { LinksFunction } from "@remix-run/node";
 import {
   isRouteErrorResponse,
@@ -17,13 +16,21 @@ import { useEffect } from "react";
 import { posthog } from "posthog-js";
 import { SpeedInsights } from "@vercel/speed-insights/remix";
 
-import styles from "./tailwind.css";
+import "./tailwind.css";
 import Header from "./components/header";
 import { Button } from "./components/ui/button";
 
 export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: styles },
-  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
+  { rel: "preconnect", href: "https://fonts.googleapis.com" },
+  {
+    rel: "preconnect",
+    href: "https://fonts.gstatic.com",
+    crossOrigin: "anonymous",
+  },
+  {
+    rel: "stylesheet",
+    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
+  },
 ];
 
 export const meta: MetaFunction = () => {

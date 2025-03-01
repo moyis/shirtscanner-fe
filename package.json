@@ -27,7 +27,7 @@
     "posthog-js": "1.224.1",
     "posthog-node": "4.8.1",
     "react": "18.3.1",
-    "react-dom": "18.3.1",
+    "react-dom": "19.0.0",
     "remix-sitemap": "3.2.0",
     "tailwind-merge": "3.0.2",
     "tailwindcss-animate": "1.0.7",

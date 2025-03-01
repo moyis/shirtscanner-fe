@@ -1,4 +1,4 @@
-import { Product } from "~/routes/search";
+import type { Product } from "~/routes/search";
 import { cn } from "~/utils";
 
 interface ProductProps extends React.HTMLAttributes<HTMLDivElement> {

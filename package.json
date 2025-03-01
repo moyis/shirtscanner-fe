@@ -31,7 +31,7 @@
     "npm-run-all": "^4.1.5",
     "posthog-js": "^1.155.4",
     "posthog-node": "^4.1.0",
-    "react": "^18.3.1",
+    "react": "^19.0.0",
     "react-dom": "^18.3.1",
     "remix-sitemap": "^3.2.0",
     "remix-utils": "^8.1.0",

@@ -1,5 +1,4 @@
-import { LoaderFunctionArgs } from "@remix-run/node";
-import { useLoaderData, useSearchParams } from "@remix-run/react";
+import { useLoaderData, useSearchParams, type LoaderFunctionArgs } from "react-router";
 import Header from "~/components/header";
 import { ProductCard } from "~/components/product-card";
 import SearchBar from "~/components/search-bar";

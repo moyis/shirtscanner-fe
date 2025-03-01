@@ -1,5 +1,4 @@
-import type { MetaFunction } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import { useLoaderData } from "react-router";
 import Header from "~/components/header";
 import {
   Table,
@@ -16,7 +15,7 @@ import {
   TooltipTrigger,
 } from "~/components/ui/tooltip";
 
-export const meta: MetaFunction = () => {
+export function meta() {
   return [
     { title: "Discover Top Sports Clothing Providers" },
     {

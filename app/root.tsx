@@ -1,22 +1,19 @@
-import type { LinksFunction } from "@remix-run/node";
+import type { LinksFunction } from "react-router";
 import {
   isRouteErrorResponse,
   Links,
-  LiveReload,
   Meta,
-  MetaFunction,
   Outlet,
   Scripts,
   ScrollRestoration,
   useLoaderData,
   useLocation,
   useRouteError,
-} from "@remix-run/react";
+} from "react-router";
 import { useEffect } from "react";
 import { posthog } from "posthog-js";
-import { SpeedInsights } from "@vercel/speed-insights/remix";
 
-import "./tailwind.css";
+import "./app.css";
 import Header from "./components/header";
 import { Button } from "./components/ui/button";
 
@@ -33,7 +30,7 @@ export const links: LinksFunction = () => [
   },
 ];
 
-export const meta: MetaFunction = () => {
+export function meta() {
   return [
     {
       title:
@@ -139,8 +136,6 @@ export default function App() {
         <Outlet />
         <ScrollRestoration />
         <Scripts />
-        <LiveReload />
-        <SpeedInsights />
       </body>
     </html>
   );

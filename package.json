@@ -32,7 +32,7 @@
     "posthog-js": "^1.155.4",
     "posthog-node": "^4.1.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react-dom": "^19.0.0",
     "remix-sitemap": "^3.2.0",
     "remix-utils": "^8.1.0",
     "source-map-support": "^0.5.21",

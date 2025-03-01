@@ -1,5 +1,5 @@
 {
-  "name": "shirtscrapper-fe",
+  "name": "shirtscanner-fe",
   "private": true,
   "type": "module",
   "scripts": {
@@ -21,17 +21,18 @@
     "@react-router/fs-routes": "7.2.0",
     "@react-router/node": "7.0.0",
     "@react-router/serve": "7.0.0",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
+    "@vercel/react-router": "1.1.0",
+    "class-variance-authority": "0.7.1",
+    "clsx": "2.1.1",
     "isbot": "5.1.23",
-    "lucide-react": "^0.477.0",
+    "lucide-react": "0.477.0",
     "posthog-js": "1.224.1",
     "posthog-node": "4.8.1",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-router": "7.0.0",
-    "tailwind-merge": "^3.0.2",
-    "tailwindcss-animate": "^1.0.7",
+    "tailwind-merge": "3.0.2",
+    "tailwindcss-animate": "1.0.7",
     "zod": "3.24.2"
   },
   "devDependencies": {

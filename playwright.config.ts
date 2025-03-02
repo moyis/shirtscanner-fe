@@ -48,7 +48,7 @@ export default defineConfig({
   ],
 
   webServer: !process.env.CI ? {
-        command: "npm run dev",
+        command: "bun run build && bun run start",
         url: "http://127.0.0.1:3000",
         reuseExistingServer: true,
       } : undefined,

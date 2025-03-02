@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router";
+import { useLoaderData, type LoaderFunction } from "react-router";
 import Header from "~/components/header";
 import {
   Table,
@@ -14,6 +14,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "~/components/ui/tooltip";
+import type { JSX } from "react";
 
 export function meta() {
   return [
@@ -32,7 +33,7 @@ interface Provider {
   status: string;
 }
 
-export const loader = async () => {
+export const loader: LoaderFunction = async () => {
   return await fetch(`${process.env.SHIRTSCANNER_BE}/v1/providers`);
 };
 

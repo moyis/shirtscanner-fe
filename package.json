@@ -39,7 +39,7 @@
     "@react-router/dev": "7.4.1",
     "@tailwindcss/vite": "4.1.0",
     "@types/dotenv": "^8.2.3",
-    "@types/node": "22.13.14",
+    "@types/node": "22.14.0",
     "@types/react": "19.0.12",
     "@types/react-dom": "19.0.1",
     "dotenv": "^16.4.7",

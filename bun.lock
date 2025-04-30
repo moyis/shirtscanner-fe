@@ -23,7 +23,7 @@
         "posthog-node": "4.13.0",
         "react": "19.0.0",
         "react-dom": "19.0.0",
-        "react-router": "7.5.2",
+        "react-router": "7.5.3",
         "tailwind-merge": "3.2.0",
         "tailwindcss-animate": "1.0.7",
         "zod": "3.24.3",
@@ -908,7 +908,7 @@
 
     "react-remove-scroll-bar": ["react-remove-scroll-bar@2.3.8", "", { "dependencies": { "react-style-singleton": "^2.2.2", "tslib": "^2.0.0" }, "peerDependencies": { "@types/react": "*", "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0" }, "optionalPeers": ["@types/react"] }, "sha512-9r+yi9+mgU33AKcj6IbT9oRCO78WriSj6t/cF8DWBZJ9aOGPOTEDvdUDz1FwKim7QXWwmHqtdHnRJfhAxEG46Q=="],
 
-    "react-router": ["react-router@7.5.2", "", { "dependencies": { "cookie": "^1.0.1", "set-cookie-parser": "^2.6.0", "turbo-stream": "2.4.0" }, "peerDependencies": { "react": ">=18", "react-dom": ">=18" }, "optionalPeers": ["react-dom"] }, "sha512-9Rw8r199klMnlGZ8VAsV/I8WrIF6IyJ90JQUdboupx1cdkgYqwnrYjH+I/nY/7cA1X5zia4mDJqH36npP7sxGQ=="],
+    "react-router": ["react-router@7.5.3", "", { "dependencies": { "cookie": "^1.0.1", "set-cookie-parser": "^2.6.0", "turbo-stream": "2.4.0" }, "peerDependencies": { "react": ">=18", "react-dom": ">=18" }, "optionalPeers": ["react-dom"] }, "sha512-3iUDM4/fZCQ89SXlDa+Ph3MevBrozBAI655OAfWQlTm9nBR0IKlrmNwFow5lPHttbwvITZfkeeeZFP6zt3F7pw=="],
 
     "react-router-devtools": ["react-router-devtools@1.1.10", "", { "dependencies": { "@babel/core": "^7.26.10", "@babel/generator": "^7.26.5", "@babel/parser": "^7.26.10", "@babel/traverse": "^7.26.10", "@babel/types": "^7.26.10", "@radix-ui/react-accordion": "^1.2.2", "@radix-ui/react-select": "^2.1.5", "beautify": "^0.0.8", "bippy": "^0.3.7", "chalk": "^5.4.1", "clsx": "^2.1.1", "date-fns": "^4.1.0", "framer-motion": "^12.0.6", "react-d3-tree": "^3.6.4", "react-diff-viewer-continued": "^4.0.5", "react-hotkeys-hook": "^4.6.1", "react-tooltip": "^5.28.0" }, "optionalDependencies": { "@biomejs/cli-darwin-arm64": "^1.9.4", "@rollup/rollup-darwin-arm64": "^4.32.1", "@rollup/rollup-linux-x64-gnu": "^4.32.1" }, "peerDependencies": { "react": ">=17", "react-dom": ">=17", "react-router": ">=7.0.0", "vite": ">=5.0.0 || >=6.0.0" } }, "sha512-/Lg0doiVq/Bv547SU4ZWE2UPUaNToGQ0Rnao0tWrZVvPfgGLMQJi4TLv3CxLrXFCo5QeZh0omJ1SCGXOZmpUUw=="],
 

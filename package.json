@@ -35,7 +35,7 @@
     "zod": "3.25.30"
   },
   "devDependencies": {
-    "@playwright/test": "1.52.0",
+    "@playwright/test": "1.53.0",
     "@react-router/dev": "7.6.1",
     "@tailwindcss/vite": "4.1.8",
     "@types/dotenv": "^8.2.3",

@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "@playwright/test": "1.53.0",
-    "@react-router/dev": "7.6.1",
+    "@react-router/dev": "7.6.2",
     "@tailwindcss/vite": "4.1.8",
     "@types/dotenv": "^8.2.3",
     "@types/node": "22.15.30",

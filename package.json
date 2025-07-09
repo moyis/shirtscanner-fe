@@ -25,7 +25,7 @@
     "clsx": "2.1.1",
     "isbot": "5.1.28",
     "lucide-react": "0.525.0",
-    "posthog-js": "1.256.2",
+    "posthog-js": "1.257.0",
     "posthog-node": "5.3.1",
     "react": "19.1.0",
     "react-dom": "19.1.0",

@@ -11,7 +11,7 @@
         "@radix-ui/react-separator": "1.1.7",
         "@radix-ui/react-slot": "1.2.3",
         "@radix-ui/react-tooltip": "1.2.7",
-        "@react-router/fs-routes": "7.6.3",
+        "@react-router/fs-routes": "7.7.0",
         "@react-router/node": "7.7.0",
         "@react-router/serve": "7.7.0",
         "@vercel/react-router": "1.2.2",
@@ -310,7 +310,7 @@
 
     "@react-router/express": ["@react-router/express@7.7.0", "", { "dependencies": { "@react-router/node": "7.7.0" }, "peerDependencies": { "express": "^4.17.1 || ^5", "react-router": "7.7.0", "typescript": "^5.1.0" }, "optionalPeers": ["typescript"] }, "sha512-R86v1qAbj3i/tG00gFM90P3nXR+B66qkp3bbaqm9VnTkbkqUCcHnVaQn64qBOl5g34FdJUMt84UsLS6v2mT/iQ=="],
 
-    "@react-router/fs-routes": ["@react-router/fs-routes@7.6.3", "", { "dependencies": { "minimatch": "^9.0.0" }, "peerDependencies": { "@react-router/dev": "^7.6.3", "typescript": "^5.1.0" }, "optionalPeers": ["typescript"] }, "sha512-7w9Z2UyAMBsQqzKChIDHnJ0ehFObG6lhFqTP9/ssW2jAfhmzYZLBfjqOHloI+glzRzj/LpSRUZBlDWiNHlbcjQ=="],
+    "@react-router/fs-routes": ["@react-router/fs-routes@7.7.0", "", { "dependencies": { "minimatch": "^9.0.0" }, "peerDependencies": { "@react-router/dev": "^7.7.0", "typescript": "^5.1.0" }, "optionalPeers": ["typescript"] }, "sha512-Ckvp35DJ6Y3KNQkNas2Uzv5i0FNngKhTVZDmCeE+tZ585IH6PQq6hhXjX/aHdL4J/sSLKqS3jBbCuya5OiESsg=="],
 
     "@react-router/node": ["@react-router/node@7.7.0", "", { "dependencies": { "@mjackson/node-fetch-server": "^0.2.0" }, "peerDependencies": { "react-router": "7.7.0", "typescript": "^5.1.0" }, "optionalPeers": ["typescript"] }, "sha512-PTl4C+QjWsbTfp+9mybOzIH10ZM/pjZrAlcoxc/KGYxcfWDEe2GDFFBQN6nGZgJe/0SwSjHsVwqo2haMKgTbvQ=="],
 

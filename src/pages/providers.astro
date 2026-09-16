@@ -1,0 +1,32 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import ProviderTable from "../components/ProviderTable";
+
+const backendUrl = import.meta.env.PUBLIC_SHIRTSCANNER_BE;
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Discover Top Sports Clothing Providers</title>
+    <meta
+      name="description"
+      content="Explore a curated selection of premium sports clothing from our network of connected providers. Find the latest shirts, jerseys, hoodies, and more, all in one convenient place. Elevate your athletic style with our diverse range of offerings. Shop confidently, knowing you have access to the best in sports fashion from trusted providers. Start browsing now for a seamless and enjoyable shopping experience."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    />
+  </head>
+  <body>
+    <Header />
+    {backendUrl && <ProviderTable client:only="react" backendUrl={backendUrl} />}
+  </body>
+</html>

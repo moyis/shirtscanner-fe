@@ -1,5 +1,4 @@
-import { useLoaderData, type LoaderFunction } from "react-router";
-import Header from "~/components/header";
+import { useEffect, useState, type JSX } from "react";
 import {
   Table,
   TableBody,
@@ -7,35 +6,19 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../components/ui/table";
+} from "./ui/table";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "~/components/ui/tooltip";
-import type { JSX } from "react";
-
-export function meta() {
-  return [
-    { title: "Discover Top Sports Clothing Providers" },
-    {
-      name: "description",
-      content:
-        "Explore a curated selection of premium sports clothing from our network of connected providers. Find the latest shirts, jerseys, hoodies, and more, all in one convenient place. Elevate your athletic style with our diverse range of offerings. Shop confidently, knowing you have access to the best in sports fashion from trusted providers. Start browsing now for a seamless and enjoyable shopping experience.",
-    },
-  ];
-};
+} from "./ui/tooltip";
 
 interface Provider {
   name: string;
   url: string;
   status: string;
 }
-
-export const loader: LoaderFunction = async () => {
-  return await fetch(`${process.env.SHIRTSCANNER_BE}/v1/providers`);
-};
 
 const getStatusEmoji = (provider: Provider): JSX.Element => {
   switch (provider.status.toUpperCase()) {
@@ -92,12 +75,25 @@ const getStatusEmoji = (provider: Provider): JSX.Element => {
   }
 };
 
-export default function Index() {
-  const providers: Array<Provider> = useLoaderData<typeof loader>();
-  console.log(providers)
+export default function ProviderTable({
+  backendUrl,
+}: {
+  backendUrl: string | undefined;
+}) {
+  const [providers, setProviders] = useState<Array<Provider>>([]);
+
+  useEffect(() => {
+    if (!backendUrl) return;
+    fetch(`${backendUrl}/v1/providers`)
+      .then((r) => r.json())
+      .then(setProviders)
+      .catch(() => {
+        setProviders([]);
+      });
+  }, [backendUrl]);
+
   return (
     <>
-      <Header />
       <section className="relative text-center">
         <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
           <div className="mx-auto flex max-w-3xl flex-col">
@@ -137,9 +133,7 @@ export default function Index() {
                 <TableCell className="flex items-center justify-center">
                   <TooltipProvider>
                     <Tooltip>
-                      <TooltipTrigger>
-                        {getStatusEmoji(provider)}
-                      </TooltipTrigger>
+                      <TooltipTrigger>{getStatusEmoji(provider)}</TooltipTrigger>
                       <TooltipContent>
                         <p>
                           Integration with{" "}

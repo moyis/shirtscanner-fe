@@ -1,0 +1,81 @@
+---
+---
+<header class="sticky top-0 z-50 text-m font-medium bg-white border-b">
+  <div class="relative px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between w-full">
+    <div class="flex items-center">
+      <details class="md:hidden">
+        <summary class="flex items-center cursor-pointer">
+          <span class="sr-only">Menu</span>
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </summary>
+        <nav class="absolute left-0 top-16 z-50 flex w-full flex-col gap-4 border-b bg-white p-4">
+          <a href="/" class="block px-2 py-1 text-lg">
+            Home
+          </a>
+          <a href="/providers" class="block px-2 py-1 text-lg">
+            Providers
+          </a>
+          <a href="https://cafecito.app/shirtscanner" class="block px-2 py-1 text-lg" target="_blank" rel="noreferrer" data-posthog="contribute-button-clicked">
+            Contribute
+          </a>
+          <a href="https://www.linkedin.com/in/fausto-moya/" class="block px-2 py-1 text-lg" target="_blank" rel="noreferrer" data-posthog="about-me-button-clicked">
+            About Me
+          </a>
+        </nav>
+      </details>
+      <a href="/" class="ml-4 lg:ml-0">
+        <span class="mt-1 font-extrabold uppercase tracking-tighter sm:text-xl lg:text-l">
+          SHIRTSCANNER
+        </span>
+      </a>
+    </div>
+    <nav class="mx-6 items-center space-x-4 lg:space-x-6 hidden md:block">
+      <a href="/" class="text-sm font-medium transition-colors">
+        Home
+      </a>
+      <a href="/providers" class="text-sm font-medium transition-colors">
+        Providers
+      </a>
+      <a
+        href="https://cafecito.app/shirtscanner"
+        class="text-sm font-medium transition-colors"
+        target="_blank"
+        rel="noreferrer"
+        data-posthog="contribute-button-clicked"
+      >
+        Contribute
+      </a>
+      <a
+        href="https://www.linkedin.com/in/fausto-moya/"
+        class="text-sm font-medium transition-colors"
+        target="_blank"
+        rel="noreferrer"
+        data-posthog="about-me-button-clicked"
+      >
+        About Me
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  import posthog from "posthog-js";
+
+  const token = import.meta.env.PUBLIC_POSTHOG_TOKEN;
+  if (token) {
+    posthog.init(token, {
+      api_host: "https://app.posthog.com",
+      capture_pageview: false,
+    });
+    posthog.capture("$pageview");
+  }
+
+  document.querySelectorAll("[data-posthog]").forEach((el) => {
+    el.addEventListener("click", () => {
+      const event = el.getAttribute("data-posthog");
+      if (event) posthog.capture(event);
+    });
+  });
+</script>

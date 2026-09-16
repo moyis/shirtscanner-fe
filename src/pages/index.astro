@@ -1,13 +1,55 @@
 ---
-// Placeholder — replaced by Task 2 (static Header + SearchBar + hero)
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import SearchBar from "../components/SearchBar.astro";
 ---
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ShirtScanner: Explore, Compare, and Find the Best Sports Clothes in China</title>
+    <title>
+      ShirtScanner: Explore, Compare, and Find the Best Sports Clothes in China
+    </title>
+    <meta
+      name="keywords"
+      content="Chinese sports clothes, camisetas china, remeras china, camisetas de futbol china, ShirtScanner, comparar camisetas china, China sports clothing marketplace, ShirtScanner reviews, Seamless sportswear search, Athletic fashion comparison"
+    />
+    <meta
+      name="description"
+      content="Explore, compare, and find your perfect sports attire with ShirtScanner. We connect you to leading Chinese retailers, offering a seamless shopping experience."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    />
   </head>
   <body>
-    <main>ShirtScanner</main>
+    <Header />
+    <section class="relative text-center">
+      <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
+        <div class="mx-auto flex max-w-3xl flex-col">
+          <h1 class="mt-1 font-extrabold uppercase tracking-tighter text-4xl lg:text-7xl">
+            ShirtScanner
+          </h1>
+          <h2 class="order-first text-xl font-medium tracking-wide">
+            Millions of cheap shirts. One simple search.
+          </h2>
+        </div>
+        <p class="mx-auto mt-4 max-w-2xl text-l text-muted-foreground">
+          Explore, Compare, and Find the Best Sports Clothes in China
+        </p>
+      </div>
+    </section>
+    <section class="relative text-center">
+      <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-24">
+        <SearchBar />
+      </div>
+    </section>
   </body>
 </html>

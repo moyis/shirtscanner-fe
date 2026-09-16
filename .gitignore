@@ -3,6 +3,8 @@ node_modules
 /.cache
 /build
 /public/build
+/.astro
+/dist
 .env
 .vercel
 /test-results/

@@ -61,21 +61,15 @@
 </header>
 
 <script>
-  import posthog from "posthog-js";
+  import { initPostHog, capture } from "../services/posthog-client";
 
-  const token = import.meta.env.PUBLIC_POSTHOG_TOKEN;
-  if (token) {
-    posthog.init(token, {
-      api_host: "https://app.posthog.com",
-      capture_pageview: false,
-    });
-    posthog.capture("$pageview");
-  }
+  initPostHog();
+  capture("$pageview");
 
   document.querySelectorAll("[data-posthog]").forEach((el) => {
     el.addEventListener("click", () => {
       const event = el.getAttribute("data-posthog");
-      if (event) posthog.capture(event);
+      if (event) capture(event);
     });
   });
 </script>

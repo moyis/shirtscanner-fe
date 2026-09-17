@@ -121,9 +121,9 @@ export default function ProductSearch({
       <section className="relative text-center">
         <div className="mx-auto max-w-screen-xl px-4 py-4 sm:px-6 sm:py-8 lg:px-8 lg:py-12">
           <div className="mx-auto flex max-w-3xl flex-col">
-            <h1 className="mt-1 font-bold uppercase tracking-tighter text-4xl lg:text-7xl">
+            <h2 className="mt-1 font-bold uppercase tracking-tighter text-4xl lg:text-7xl">
               {q}
-            </h1>
+            </h2>
             <h2 className="order-first font-medium tracking-wide">
               Found {totalProducts} results for
             </h2>

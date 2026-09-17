@@ -6,4 +6,4 @@ Allow: /
 Host: https://www.shirtscanner.com
 
 # Sitemaps
-Sitemap: https://www.shirtscanner.com/sitemap.xml
+Sitemap: https://www.shirtscanner.com/sitemap-index.xml

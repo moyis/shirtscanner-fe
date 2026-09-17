@@ -4,7 +4,7 @@ import { test, expect } from "@playwright/test";
 test("has title", async ({ page }) => {
   await page.goto("/");
   await expect(page).toHaveTitle(
-    "ShirtScanner: Explore, Compare, and Find the Best Sports Clothes in China"
+    "ShirtScanner - Find the Best Sports Clothes in China"
   );
 });
 
@@ -20,6 +20,22 @@ test("has providers", async ({ page }) => {
   await page.goto(`/providers`);
   const rowCount = await page.$$eval(`tr`, rows => rows.length);
   expect(rowCount).toBeGreaterThan(0);
+});
+
+test("has seo head tags", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+    "href",
+    "https://www.shirtscanner.com/"
+  );
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
+    "content",
+    "https://www.shirtscanner.com/og-image.png"
+  );
+  const jsonLd = await page
+    .locator('script[type="application/ld+json"]')
+    .textContent();
+  expect(jsonLd).toContain("SearchAction");
 });
 
 test("providers redirects to providers page search", async ({ page }) => {

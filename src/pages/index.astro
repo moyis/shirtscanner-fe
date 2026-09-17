@@ -2,31 +2,32 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import SearchBar from "../components/SearchBar.astro";
+import SEOHead from "../components/SEOHead.astro";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "ShirtScanner",
+  url: "https://www.shirtscanner.com",
+  description:
+    "Search millions of cheap shirts across top Chinese sports clothing stores.",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate:
+        "https://www.shirtscanner.com/search?q={search_term_string}",
+    },
+    "query-input": "required name=search_term_string",
+  },
+};
 ---
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>
-      ShirtScanner: Explore, Compare, and Find the Best Sports Clothes in China
-    </title>
-    <meta
-      name="keywords"
-      content="Chinese sports clothes, camisetas china, remeras china, camisetas de futbol china, ShirtScanner, comparar camisetas china, China sports clothing marketplace, ShirtScanner reviews, Seamless sportswear search, Athletic fashion comparison"
-    />
-    <meta
-      name="description"
-      content="Explore, compare, and find your perfect sports attire with ShirtScanner. We connect you to leading Chinese retailers, offering a seamless shopping experience."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    <SEOHead
+      title="ShirtScanner - Find the Best Sports Clothes in China"
+      description="Search millions of cheap shirts across top Chinese sports clothing stores. Compare prices and find your next football, basketball, or sports jersey."
+      jsonLd={jsonLd}
     />
   </head>
   <body>

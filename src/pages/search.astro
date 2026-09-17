@@ -2,31 +2,57 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import ProductSearch from "../components/ProductSearch";
+import SEOHead from "../components/SEOHead.astro";
 
 const backendUrl = import.meta.env.PUBLIC_SHIRTSCANNER_BE;
+
+const popularSearches = [
+  { q: "Argentina", label: "Argentina shirt" },
+  { q: "Barcelona", label: "Barcelona shirt" },
+  { q: "Real Madrid", label: "Real Madrid shirt" },
+  { q: "Basketball Jersey", label: "Basketball jerseys" },
+  { q: "River Plate", label: "River Plate shirt" },
+  { q: "Boca Juniors", label: "Boca Juniors shirt" },
+];
 ---
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ShirtScanner Search</title>
-    <meta
-      name="description"
-      content="Search for shirts across Chinese sports clothing stores."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    <SEOHead
+      title="Search Sports Shirts in China - ShirtScanner"
+      description="Search millions of cheap sports shirts across Chinese stores. Football kits, basketball jerseys, and more, all in one search."
+      canonicalPath="/search"
     />
   </head>
   <body>
     <Header />
+    <section class="relative text-center">
+      <div class="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
+        <div class="mx-auto flex max-w-3xl flex-col">
+          <h1 class="mt-1 font-extrabold uppercase tracking-tighter text-4xl lg:text-6xl">
+            Search Sports Shirts
+          </h1>
+          <p class="order-first text-xl font-medium tracking-wide">
+            Millions of cheap shirts. One simple search.
+          </p>
+        </div>
+        <p class="mx-auto mt-4 max-w-2xl text-l text-muted-foreground">
+          Search every connected Chinese sports clothing store at once. Try a
+          popular search to get started:
+        </p>
+        <ul class="mx-auto mt-6 flex max-w-3xl flex-wrap justify-center gap-3">
+          {popularSearches.map((item) => (
+            <li key={item.q}>
+              <a
+                class="inline-block rounded-full border border-gray-300 px-4 py-1.5 text-sm font-medium transition-colors hover:border-black"
+                href={`/search?q=${encodeURIComponent(item.q)}`}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
     {backendUrl && <ProductSearch client:only="react" backendUrl={backendUrl} />}
   </body>
 </html>

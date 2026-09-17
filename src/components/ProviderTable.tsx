@@ -94,18 +94,9 @@ export default function ProviderTable({
 
   return (
     <>
-      <section className="relative text-center">
-        <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
-          <div className="mx-auto flex max-w-3xl flex-col">
-            <h1 className="mt-1 font-bold tracking-tighter text-4xl lg:text-7xl">
-              All our {providers.length} providers
-            </h1>{" "}
-          </div>
-          <p className="mx-auto mt-4 max-w-2xl text-xl text-muted-foreground">
-            We search your shirts in all of them at the same time
-          </p>
-        </div>
-      </section>
+      <p className="text-center text-xl font-medium tracking-wide">
+        All our {providers.length} providers
+      </p>
       <section className="h-full flex-1 flex-col p-8 md:flex">
         <Table>
           <TableHeader>

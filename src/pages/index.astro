@@ -3,6 +3,7 @@ import "../styles/global.css";
 import Header from "../components/Header.astro";
 import SearchBar from "../components/SearchBar.astro";
 import SEOHead from "../components/SEOHead.astro";
+import Footer from "../components/Footer.astro";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -21,6 +22,8 @@ const jsonLd = {
     "query-input": "required name=search_term_string",
   },
 };
+
+const popularSearches = ["Barcelona", "Real Madrid", "Argentina", "Retro 90s"];
 ---
 <html lang="en">
   <head>
@@ -32,25 +35,37 @@ const jsonLd = {
   </head>
   <body>
     <Header />
-    <section class="relative text-center">
-      <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
-        <div class="mx-auto flex max-w-3xl flex-col">
-          <h1 class="mt-1 font-extrabold uppercase tracking-tighter text-4xl lg:text-7xl">
-            ShirtScanner
+    <main id="main">
+      <section class="relative overflow-hidden bg-background">
+        <div class="relative mx-auto max-w-2xl px-4 py-16 text-left sm:px-6 sm:py-24">
+          <p class="flex items-center gap-2 text-[0.8125rem] font-semibold uppercase tracking-[0.14em] text-stadium-ink">
+            <span class="hero-tag-dot" aria-hidden="true"></span>
+            Scanning every Chinese store at once
+          </p>
+          <h1 class="font-display mt-3 text-balance font-black uppercase leading-[0.9] tracking-[-0.03em] text-kit-navy [font-size:clamp(2.75rem,11vw,4.5rem)] [font-stretch:120%]">
+            SHIRT
+            <span class="ml-[0.03em] inline-block bg-volt px-[0.08em] text-volt-ink">SCANNER</span>
           </h1>
-          <h2 class="order-first text-xl font-medium tracking-wide">
-            Millions of cheap shirts. One simple search.
-          </h2>
+          <p class="mt-5 max-w-[520px] text-[1.0625rem] leading-[1.6] text-foreground">
+            One query hits every store at the same time. See what&rsquo;s found,
+            which stores answered, and the direct link to order it yourself.
+          </p>
+          <div class="mt-8">
+            <SearchBar />
+          </div>
+          <div class="mt-4 flex flex-wrap gap-2">
+            {popularSearches.map((q) => (
+              <a
+                href={`/search?q=${encodeURIComponent(q)}`}
+                class="inline-flex min-h-11 items-center rounded-full border border-slate-line bg-card px-4 text-sm font-semibold text-foreground transition-all duration-200 hover:border-kit-navy hover:text-kit-navy active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-ring"
+              >
+                {q}
+              </a>
+            ))}
+          </div>
         </div>
-        <p class="mx-auto mt-4 max-w-2xl text-l text-muted-foreground">
-          Explore, Compare, and Find the Best Sports Clothes in China
-        </p>
-      </div>
-    </section>
-    <section class="relative text-center">
-      <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-24">
-        <SearchBar />
-      </div>
-    </section>
+      </section>
+    </main>
+    <Footer />
   </body>
 </html>

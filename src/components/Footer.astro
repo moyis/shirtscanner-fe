@@ -1,0 +1,81 @@
+---
+const nav = [
+  { href: "/", label: "Home" },
+  { href: "/search", label: "Search" },
+  { href: "/providers", label: "Providers" },
+];
+const actions = [
+  { href: "https://cafecito.app/shirtscanner", label: "Contribute", posthog: "contribute-button-clicked" },
+  { href: "https://www.linkedin.com/in/fausto-moya/", label: "About Me", posthog: "about-me-button-clicked" },
+];
+const currentYear = new Date().getFullYear();
+---
+<footer class="bg-noir text-pitch-white">
+  <div class="kit-scan-band relative h-9 w-full overflow-hidden" aria-hidden="true">
+    <div class="kit-scanline kit-scanline--noir"></div>
+  </div>
+  <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+    <div class="grid gap-10 md:grid-cols-12 md:gap-8">
+      <div class="md:col-span-5">
+        <div class="kit-barcode kit-barcode--light h-8" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+        <p
+          class="font-display mt-4 font-black uppercase leading-[0.9] tracking-[-0.03em] text-pitch-white [font-stretch:120%]"
+        >
+          SHIRT<span class="bg-volt text-volt-ink">SCANNER</span>
+        </p>
+        <p class="mt-4 max-w-sm text-[0.9375rem] leading-[1.6] text-pitch-white/85">
+          One query, every store at once. Results stream in live, each one
+          linked straight to the source so you can check it yourself before you
+          buy.
+        </p>
+      </div>
+      <nav aria-label="Footer" class="md:col-span-3 md:col-start-7">
+        <h2 class="text-xs font-semibold uppercase tracking-[0.14em] text-pitch-white/60">
+          Scan
+        </h2>
+        <ul class="mt-3 flex flex-col">
+          {nav.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="flex min-h-11 items-center text-base font-semibold text-pitch-white transition-colors hover:text-volt focus:outline-none focus:ring-2 focus:ring-volt focus:ring-inset"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <div class="md:col-span-3">
+        <h2 class="text-xs font-semibold uppercase tracking-[0.14em] text-pitch-white/60">
+          The Crew
+        </h2>
+        <ul class="mt-3 flex flex-col">
+          {actions.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                target="_blank"
+                rel="noreferrer"
+                data-posthog={item.posthog}
+                class="flex min-h-11 items-center text-base font-semibold text-pitch-white transition-colors hover:text-volt focus:outline-none focus:ring-2 focus:ring-volt focus:ring-inset"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <p class="mt-4 text-xs leading-[1.5] text-pitch-white/60">
+          Built scrappy, in the open. No urgency timers, no hype — just stores
+          checked before you click.
+        </p>
+      </div>
+    </div>
+    <div class="mt-12 flex flex-col gap-2 border-t border-pitch-white/20 pt-6 text-xs text-pitch-white/60 sm:flex-row sm:items-center sm:justify-between">
+      <p>&copy; {currentYear} ShirtScanner. All right reserved.</p>
+      <p>Not affiliated with any club or brand. Product links go straight to the store.</p>
+    </div>
+  </div>
+</footer>

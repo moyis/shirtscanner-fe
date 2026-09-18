@@ -3,6 +3,7 @@ import "../styles/global.css";
 import Header from "../components/Header.astro";
 import ProviderTable from "../components/ProviderTable";
 import SEOHead from "../components/SEOHead.astro";
+import Footer from "../components/Footer.astro";
 
 const backendUrl = import.meta.env.PUBLIC_SHIRTSCANNER_BE;
 ---
@@ -16,22 +17,9 @@ const backendUrl = import.meta.env.PUBLIC_SHIRTSCANNER_BE;
   </head>
   <body>
     <Header />
-    <section class="relative text-center">
-      <div class="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
-        <div class="mx-auto flex max-w-3xl flex-col">
-          <h1 class="mt-1 font-extrabold uppercase tracking-tighter text-4xl lg:text-6xl">
-            Top Sports Clothing Providers
-          </h1>
-          <p class="order-first text-xl font-medium tracking-wide">
-            We search your shirts in all of them at the same time
-          </p>
-        </div>
-        <p class="mx-auto mt-4 max-w-2xl text-l text-muted-foreground">
-          Curated Chinese sports clothing stores: football shirts, basketball
-          jerseys, hoodies and more in one place.
-        </p>
-      </div>
-    </section>
-    {backendUrl && <ProviderTable client:only="react" backendUrl={backendUrl} />}
+    <main id="main">
+      {backendUrl && <ProviderTable client:only="react" backendUrl={backendUrl} />}
+    </main>
+    <Footer />
   </body>
 </html>

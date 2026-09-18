@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-17T00:00:00.000Z",
+  "title": "Design System: ShirtScanner",
+  "extensions": {
+    "colorMeta": {
+      "pitch-white": { "role": "neutral", "displayName": "Pitch White", "canonical": "oklch(0.995 0.002 260)", "tonalRamp": ["oklch(0.20 0.02 260)", "oklch(0.40 0.015 260)", "oklch(0.55 0.01 260)", "oklch(0.72 0.008 260)", "oklch(0.85 0.005 260)", "oklch(0.92 0.004 260)", "oklch(0.97 0.003 260)", "oklch(0.995 0.002 260)"] },
+      "kit-navy": { "role": "neutral", "displayName": "Kit Navy", "canonical": "oklch(0.23 0.04 263)", "tonalRamp": ["oklch(0.12 0.03 263)", "oklch(0.17 0.035 263)", "oklch(0.23 0.04 263)", "oklch(0.30 0.045 263)", "oklch(0.38 0.05 263)", "oklch(0.48 0.05 263)", "oklch(0.60 0.045 263)", "oklch(0.72 0.03 263)"] },
+      "stadium-ink": { "role": "neutral", "displayName": "Stadium Ink", "canonical": "oklch(0.34 0.055 265)", "tonalRamp": ["oklch(0.18 0.05 265)", "oklch(0.24 0.05 265)", "oklch(0.34 0.055 265)", "oklch(0.42 0.05 265)", "oklch(0.52 0.045 265)", "oklch(0.63 0.035 265)", "oklch(0.75 0.02 265)", "oklch(0.88 0.01 265)"] },
+      "slate-mist": { "role": "neutral", "displayName": "Slate Mist", "canonical": "oklch(0.96 0.012 260)", "tonalRamp": ["oklch(0.20 0.01 260)", "oklch(0.35 0.01 260)", "oklch(0.50 0.01 260)", "oklch(0.62 0.012 260)", "oklch(0.75 0.012 260)", "oklch(0.85 0.012 260)", "oklch(0.92 0.012 260)", "oklch(0.96 0.012 260)"] },
+      "slate-line": { "role": "neutral", "displayName": "Slate Line", "canonical": "oklch(0.9 0.022 260)", "tonalRamp": ["oklch(0.22 0.015 260)", "oklch(0.38 0.018 260)", "oklch(0.52 0.02 260)", "oklch(0.64 0.02 260)", "oklch(0.76 0.022 260)", "oklch(0.84 0.022 260)", "oklch(0.88 0.022 260)", "oklch(0.90 0.022 260)"] },
+      "kit-blue": { "role": "primary", "displayName": "Kit Blue", "canonical": "oklch(0.47 0.19 263)", "tonalRamp": ["oklch(0.18 0.10 263)", "oklch(0.26 0.12 263)", "oklch(0.34 0.15 263)", "oklch(0.42 0.17 263)", "oklch(0.47 0.19 263)", "oklch(0.55 0.17 263)", "oklch(0.66 0.13 263)", "oklch(0.78 0.08 263)"] },
+      "kit-blue-bright": { "role": "primary", "displayName": "Kit Blue Bright", "canonical": "oklch(0.6 0.135 265)", "tonalRamp": ["oklch(0.20 0.11 265)", "oklch(0.30 0.12 265)", "oklch(0.40 0.13 265)", "oklch(0.50 0.13 265)", "oklch(0.60 0.135 265)", "oklch(0.68 0.11 265)", "oklch(0.78 0.08 265)", "oklch(0.88 0.04 265)"] },
+      "kit-blue-deep": { "role": "primary", "displayName": "Kit Blue Deep", "canonical": "oklch(0.4 0.17 263)", "tonalRamp": ["oklch(0.16 0.09 263)", "oklch(0.24 0.12 263)", "oklch(0.32 0.15 263)", "oklch(0.4 0.17 263)", "oklch(0.47 0.19 263)", "oklch(0.58 0.16 263)", "oklch(0.70 0.11 263)", "oklch(0.82 0.06 263)"] },
+      "kit-red": { "role": "secondary", "displayName": "Kit Red", "canonical": "oklch(0.5 0.215 27)", "tonalRamp": ["oklch(0.18 0.12 27)", "oklch(0.26 0.15 27)", "oklch(0.34 0.18 27)", "oklch(0.42 0.19 27)", "oklch(0.50 0.215 27)", "oklch(0.58 0.20 27)", "oklch(0.70 0.15 27)", "oklch(0.82 0.08 27)"] },
+      "kit-red-deep": { "role": "secondary", "displayName": "Kit Red Deep", "canonical": "oklch(0.42 0.19 27)", "tonalRamp": ["oklch(0.16 0.10 27)", "oklch(0.24 0.13 27)", "oklch(0.32 0.16 27)", "oklch(0.42 0.19 27)", "oklch(0.50 0.19 27)", "oklch(0.60 0.16 27)", "oklch(0.70 0.12 27)", "oklch(0.82 0.06 27)"] },
+      "crest-gold": { "role": "tertiary", "displayName": "Crest Gold", "canonical": "oklch(0.78 0.13 88)", "tonalRamp": ["oklch(0.22 0.06 88)", "oklch(0.34 0.08 88)", "oklch(0.46 0.09 88)", "oklch(0.58 0.10 88)", "oklch(0.68 0.11 88)", "oklch(0.74 0.12 88)", "oklch(0.80 0.12 88)", "oklch(0.90 0.08 88)"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Page titles and the wordmark only. Uppercase, extra-bold, tracking floor -0.03em, clamp ceiling 4.5rem." },
+      "title": { "displayName": "Title", "purpose": "Provider names and row headers." },
+      "body": { "displayName": "Body", "purpose": "Descriptions and result meta. Max line-length 75ch." },
+      "label": { "displayName": "Label", "purpose": "Button labels, chips, table headers, status text." }
+    },
+    "shadows": [
+      { "name": "overlay", "value": "0 4px 8px oklch(0.15 0.04 263 / 0.14)", "purpose": "Floating surfaces only: tooltips, popovers, the mobile drawer. Never cards at rest." }
+    ],
+    "motion": [
+      { "name": "ease-standard", "value": "cubic-bezier(0.2, 0.9, 0.3, 1)", "purpose": "Default easing for state transitions. Ease-out, exponential character; no bounce, no elastic." },
+      { "name": "duration-fast", "value": "150ms", "purpose": "Hover, focus, color transitions." },
+      { "name": "duration-base", "value": "250ms", "purpose": "Accordion expand/collapse, drawer slide." },
+      { "name": "accordion-down", "value": "height 250ms cubic-bezier(0.2, 0.9, 0.3, 1)", "purpose": "Accordion content open." },
+      { "name": "accordion-up", "value": "height 250ms cubic-bezier(0.2, 0.9, 0.3, 1)", "purpose": "Accordion content close." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The search submit and every main action: Kit Blue fill, white text, sharp 8px radius.",
+      "html": "<button class=\"ds-btn-primary\">Search</button>",
+      "css": ".ds-btn-primary {\n  background: oklch(0.47 0.19 263);\n  color: #ffffff;\n  border: none;\n  border-radius: 8px;\n  padding: 12px 20px;\n  min-height: 44px;\n  font-family: Inter, ui-sans-serif, system-ui, sans-serif;\n  font-size: 0.875rem;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 150ms ease;\n}\n.ds-btn-primary:hover { background: oklch(0.4 0.17 263); }\n.ds-btn-primary:focus-visible {\n  outline: none;\n  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px oklch(0.47 0.19 263);\n}"
+    },
+    {
+      "name": "Red Action Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Emphatic or destructive secondary action: Kit Red fill, white text, flat.",
+      "html": "<button class=\"ds-btn-red\">Clear results</button>",
+      "css": ".ds-btn-red {\n  background: oklch(0.5 0.215 27);\n  color: #ffffff;\n  border: none;\n  border-radius: 8px;\n  padding: 12px 20px;\n  min-height: 44px;\n  font-family: Inter, ui-sans-serif, system-ui, sans-serif;\n  font-size: 0.875rem;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 150ms ease;\n}\n.ds-btn-red:hover { background: oklch(0.42 0.19 27); }\n.ds-btn-red:focus-visible {\n  outline: none;\n  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px oklch(0.5 0.215 27);\n}"
+    },
+    {
+      "name": "Search Input",
+      "kind": "input",
+      "refersTo": "search-input",
+      "description": "Pitch White field with a Slate Line hairline border; focus ring snaps to Kit Blue.",
+      "html": "<div class=\"ds-field\"><svg class=\"ds-field-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><path d=\"m21 21-4.3-4.3\"/></svg><input class=\"ds-input\" type=\"search\" placeholder=\"Find your next shirt...\"></div>",
+      "css": ".ds-field {\n  position: relative;\n  background: oklch(0.995 0.002 260);\n  border: 1px solid oklch(0.9 0.022 260);\n  border-radius: 8px;\n  display: flex;\n  align-items: center;\n  min-height: 48px;\n}\n.ds-field-icon {\n  width: 18px;\n  height: 18px;\n  margin-left: 14px;\n  color: oklch(0.34 0.055 265);\n  flex-shrink: 0;\n}\n.ds-input {\n  flex: 1;\n  border: none;\n  background: transparent;\n  padding: 12px 16px 12px 10px;\n  min-height: 46px;\n  font-family: Inter, ui-sans-serif, system-ui, sans-serif;\n  font-size: 0.875rem;\n  color: oklch(0.23 0.04 263);\n  outline: none;\n}\n.ds-input::placeholder { color: oklch(0.34 0.055 265); }\n.ds-field:focus-within {\n  box-shadow: 0 0 0 2px #ffffff, 0 0 0 3px oklch(0.47 0.19 263);\n}"
+    },
+    {
+      "name": "Kit Number Count Chip",
+      "kind": "chip",
+      "refersTo": "count-chip",
+      "description": "The sanctioned count motif on accordion rows: Kit Red pill, white number.",
+      "html": "<span class=\"ds-chip-count\">14</span>",
+      "css": ".ds-chip-count {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  background: oklch(0.5 0.215 27);\n  color: #ffffff;\n  border-radius: 999px;\n  padding: 2px 10px;\n  min-height: 22px;\n  font-family: Inter, ui-sans-serif, system-ui, sans-serif;\n  font-size: 0.875rem;\n  font-weight: 600;\n  line-height: 1.25;\n  white-space: nowrap;\n}"
+    },
+    {
+      "name": "Status Pill: FIT",
+      "kind": "chip",
+      "refersTo": "status-up",
+      "description": "Provider up status: Kit Blue pill labelled FIT.",
+      "html": "<span class=\"ds-status ds-status-up\">FIT</span>\n<span class=\"ds-status ds-status-down\">MISSED</span>",
+      "css": ".ds-status {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 999px;\n  padding: 3px 10px;\n  min-height: 24px;\n  font-family: Inter, ui-sans-serif, system-ui, sans-serif;\n  font-size: 0.75rem;\n  font-weight: 600;\n  line-height: 1.25;\n  letter-spacing: 0.02em;\n  white-space: nowrap;\n}\n.ds-status-up { background: oklch(0.47 0.19 263); color: #ffffff; }\n.ds-status-down { background: oklch(0.5 0.215 27); color: #ffffff; }\n.ds-status-checking { background: oklch(0.96 0.012 260); color: oklch(0.34 0.055 265); }"
+    },
+    {
+      "name": "Product Card",
+      "kind": "card",
+      "refersTo": "product-card",
+      "description": "Flat, pitch-white result card: square media, navy name, navy price. Low-key; never nested.",
+      "html": "<a class=\"ds-card\" href=\"#\">\n  <div class=\"ds-card-media\"></div>\n  <div class=\"ds-card-body\">\n    <p class=\"ds-card-name\">Messi Away 2024/25</p>\n    <p class=\"ds-card-price\">$18.</p>\n  </div>\n</a>",
+      "css": ".ds-card {\n  display: block;\n  width: 150px;\n  background: oklch(0.995 0.002 260);\n  border-radius: 8px;\n  text-decoration: none;\n}\n.ds-card-media {\n  height: 150px;\n  background: oklch(0.96 0.012 260);\n  border-radius: 8px;\n}\n.ds-card-body { padding-top: 10px; }\n.ds-card-name {\n  margin: 0;\n  font-family: Inter, ui-sans-serif, system-ui, sans-serif;\n  font-size: 0.875rem;\n  font-weight: 500;\n  line-height: 1.25;\n  color: oklch(0.23 0.04 263);\n}\n.ds-card-price {\n  margin: 2px 0 0;\n  font-family: Inter, ui-sans-serif, system-ui, sans-serif;\n  font-size: 0.75rem;\n  font-weight: 600;\n  color: oklch(0.34 0.055 265);\n}"
+    },
+    {
+      "name": "Provider Accordion Row",
+      "kind": "nav",
+      "refersTo": "accordion-row",
+      "description": "One provider per row: navy title, Kit Number count chip, chevron. Bordered top/bottom.",
+      "html": "<div class=\"ds-row\">\n  <span class=\"ds-row-name\">1688 Store A</span>\n  <span class=\"ds-cnt\">14</span>\n  <svg class=\"ds-chev\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"/></svg>\n</div>",
+      "css": ".ds-row {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  min-height: 56px;\n  padding: 0 4px;\n  border-top: 1px solid oklch(0.9 0.022 260);\n  border-bottom: 1px solid oklch(0.9 0.022 260);\n  font-family: Inter, ui-sans-serif, system-ui, sans-serif;\n}\n.ds-row-name {\n  flex: 1;\n  font-size: 1.125rem;\n  font-weight: 700;\n  color: oklch(0.23 0.04 263);\n  line-height: 1.2;\n}\n.ds-cnt {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  background: oklch(0.5 0.215 27);\n  color: #ffffff;\n  border-radius: 999px;\n  padding: 2px 10px;\n  font-size: 0.875rem;\n  font-weight: 600;\n}\n.ds-chev { width: 18px; height: 18px; color: oklch(0.34 0.055 265); }\n.ds-row:hover .ds-chev { transform: rotate(180deg); }"
+    },
+    {
+      "name": "Wordmark + Nav Link",
+      "kind": "nav",
+      "refersTo": "nav-wordmark",
+      "description": "Uppercase extra-bold navy wordmark with a red SCANNER; links underline in Kit Blue on hover/active.",
+      "html": "<a class=\"ds-wordmark\" href=\"#\">SHIRT<span>SCANNER</span></a>\n<nav class=\"ds-nav\">\n  <a class=\"ds-navlink\" href=\"#\">Home</a>\n  <a class=\"ds-navlink\" href=\"#\">Providers</a>\n</nav>",
+      "css": ".ds-wordmark {\n  font-family: Inter, ui-sans-serif, system-ui, sans-serif;\n  font-size: 1.125rem;\n  font-weight: 800;\n  letter-spacing: -0.03em;\n  text-transform: uppercase;\n  color: oklch(0.23 0.04 263);\n  text-decoration: none;\n}\n.ds-wordmark span { color: oklch(0.5 0.215 27); }\n.ds-nav { display: flex; gap: 16px; margin-top: 8px; }\n.ds-navlink {\n  font-family: Inter, ui-sans-serif, system-ui, sans-serif;\n  font-size: 0.875rem;\n  font-weight: 600;\n  color: oklch(0.23 0.04 263);\n  text-decoration: none;\n  padding: 6px 0;\n  min-height: 44px;\n  display: inline-flex;\n  align-items: center;\n}\n.ds-navlink:hover, .ds-navlink:focus-visible { box-shadow: inset 0 -2px 0 oklch(0.47 0.19 263); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Kit-Bag Scraper",
+    "overview": "ShirtScanner is a tool first and a poster second: one query, streamed across a wall of Chinese marketplace stores, results arriving like a live score feed. Color follows the retro kit: clean cool white pitch surface, royal blue action, red accent, and a single crest-gold detail. Typography is one voice (Inter), pressed hard into weight and case contrast. The phone is the primary canvas: single column, thumb reach, 44px touch targets, no hover-only affordances.",
+    "keyCharacteristics": [
+      "Cool white body, blue-undertow ink, two-block kit palette (royal blue + red)",
+      "One typeface, uppercase extra-bold display, no second family",
+      "Flat surfaces: hairline borders and tonal layering, not shadows",
+      "Sharp, slightly-curved controls (6-12px), full-pill only for chips and progress",
+      "Dense, results-first layout; no decorative sections",
+      "Pocket-first: single column, thumb-reachable actions, 44px touch targets, no hover-only controls"
+    ],
+    "rules": [
+      { "name": "The Pitch-White Rule", "body": "The body is always cool white with a trace of the blue hue. No cream, sand, beige, parchment, or warm-tinted surfaces anywhere. Warmth is a kit color, not a paper color.", "section": "colors" },
+      { "name": "The Two-Block Rule", "body": "Kit Blue and Kit Red appear as solid blocks next to each other, like a jersey. Never as a gradient between them, never as stripes, never blended.", "section": "colors" },
+      { "name": "The Crest-Gold Rule", "body": "Crest Gold is a two-touch maximum per screen. Condensed on price and standout moments only.", "section": "colors" },
+      { "name": "The One-Face Rule", "body": "Inter is the only family. No second display font, no mono unless a future feature produces literal code or query text.", "section": "typography" },
+      { "name": "The Tracking Floor Rule", "body": "Uppercase display never goes tighter than -0.03em letter-spacing. -0.05em and tighter looks cramped, not bold.", "section": "typography" },
+      { "name": "The Uppercase-Only-Display Rule", "body": "All-caps is reserved for display headings and the wordmark. Body copy, labels, and buttons never sit in all caps.", "section": "typography" },
+      { "name": "The Flat Pitch Rule", "body": "Depth is conveyed by hairline borders and tonal layering, never by shadows. Shadows are reserved for floating overlays only, and no shadow blur exceeds 8px.", "section": "elevation" },
+      { "name": "The Pocket-First Rule", "body": "Nothing on a phone screen may depend on hover, on a tablet-width layout, or on a tap target under 44px. Every action a user takes while standing with one hand must be reachable in the bottom half of the screen. When a desktop pattern cannot collapse cleanly to a phone, it is replaced, not squeezed.", "section": "components" }
+    ],
+    "dos": [
+      "Do keep the body Pitch White, cool, with the blue undertow. Warmth comes from Kit Red and the type, never from the page.",
+      "Do use Kit Blue for every primary action and Kit Red for counts, down-status, and destructive actions, as solid blocks.",
+      "Do cap display sizes at clamp(..., 4.5rem) and display tracking at -0.03em.",
+      "Do honor WCAG 2.1 AA: 4.5:1 body text, 3:1 large text, visible focus rings, and prefers-reduced-motion alternates for every animation.",
+      "Do surface honest signals: what was found, what was missed, which providers are up, and the direct link to check the store yourself.",
+      "Do give every animation a reduced-motion fallback (crossfade or instant), and ease out with exponential curves when motion runs.",
+      "Do design on a phone first: single column, 44px minimum touch targets, primary action in thumb reach, no hover-only interactions.",
+      "Do reset the first render against the largest and smallest expected screens and the longest heading words; if a heading overflows, reduce the clamp or rewrite the copy."
+    ],
+    "donts": [
+      "Don't ship any interaction that only exists on hover, or any tap target under 44px on its smallest dimension.",
+      "Don't squeeze a desktop pattern onto a phone; collapse tables to stacked rows and grids to single column, or replace the pattern.",
+      "Don't use gradients, gradient text, or background-clip text. Color is solid blocks, per the Two-Block Rule.",
+      "Don't use glassmorphism, blur-glass cards, or 32px+ radii on cards or sections.",
+      "Don't build hero-metric templates (big number, label, supporting stats) or identical repeated card grids.",
+      "Don't ship fake urgency: no countdown timers, no 'only 3 left' pricing, no hype pricing, no spin-to-win.",
+      "Don't use cream/sand/parchment/beige backgrounds. Ever.",
+      "Don't use side-stripe borders > 1px as colored accents on cards or alerts.",
+      "Don't pair a 1px border with a wide (>=16px) drop shadow on the same element.",
+      "Don't use clipart-style, hand-drawn sketchy SVG illustrations, grunge filters, or repeating-diagonal stripe backgrounds.",
+      "Don't put a tiny uppercase tracked eyebrow above every section. The Kit-Number chip is the only sanctioned numbered motif.",
+      "Don't use the streamline/empower/seamless/supercharge family of marketing words.",
+      "Don't render body copy or buttons in all caps, and don't set display tracking tighter than -0.03em."
+    ]
+  }
+}

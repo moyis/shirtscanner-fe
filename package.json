@@ -6,31 +6,28 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "typecheck": "astro check",
     "test": "bunx playwright test"
   },
   "dependencies": {
     "@astrojs/react": "^6.0.6",
     "@astrojs/sitemap": "^3.7.4",
     "@radix-ui/react-accordion": "1.2.20",
-    "@radix-ui/react-dialog": "1.1.23",
     "@radix-ui/react-progress": "1.1.16",
     "@radix-ui/react-scroll-area": "1.2.18",
     "@radix-ui/react-separator": "1.1.15",
-    "@radix-ui/react-slot": "1.3.3",
     "@radix-ui/react-tooltip": "1.2.16",
     "astro": "^7.3.3",
-    "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
-    "isbot": "5.2.2",
     "lucide-react": "1.47.0",
     "posthog-js": "1.433.9",
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "tailwind-merge": "3.7.0",
-    "tailwindcss-animate": "1.0.7",
-    "zod": "4.6.5"
+    "tailwindcss-animate": "1.0.7"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.10",
     "@playwright/test": "1.63.0",
     "@tailwindcss/vite": "^4.3.3",
     "@types/dotenv": "8.2.3",
@@ -39,7 +36,7 @@
     "@types/react-dom": "19.3.0",
     "dotenv": "17.4.2",
     "tailwindcss": "4.3.3",
-    "typescript": "7.0.2"
+    "typescript": "6"
   },
   "engines": {
     "node": ">=22.0.0"

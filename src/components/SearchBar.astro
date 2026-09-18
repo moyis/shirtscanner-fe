@@ -2,9 +2,9 @@
 ---
 <form method="get" action="/search">
   <div class="relative">
-    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+    <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3.5">
       <svg
-        class="w-4 h-4"
+        class="h-5 w-5 text-muted-foreground"
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -23,13 +23,14 @@
       name="q"
       type="search"
       id="default-search"
-      class="block w-full p-4 ps-10 text-sm border border-gray-300 rounded-lg bg-white focus:ring-black focus:border-black "
+      aria-label="Search for shirts"
+      class="h-14 w-full rounded-lg border border-input bg-background ps-10 pe-28 text-base text-foreground placeholder:text-muted-foreground focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring"
       placeholder="Find your next shirt..."
       required
     />
     <button
       type="submit"
-      class="text-white absolute end-2.5 bottom-2.5 bg-black hover:ring-black focus:ring-4 focus:outline-none focus:ring-black font-medium rounded-lg text-sm px-4 py-2 "
+      class="absolute end-1.5 bottom-1.5 top-1.5 min-w-[88px] rounded-md bg-primary px-4 text-sm font-semibold text-primary-foreground transition-all duration-150 hover:bg-volt-deep active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-ring"
     >
       Search
     </button>

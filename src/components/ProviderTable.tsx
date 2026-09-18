@@ -1,4 +1,4 @@
-import { useEffect, useState, type JSX } from "react";
+import { useEffect, useState } from "react";
 import {
   Table,
   TableBody,
@@ -20,60 +20,23 @@ interface Provider {
   status: string;
 }
 
-const getStatusEmoji = (provider: Provider): JSX.Element => {
-  switch (provider.status.toUpperCase()) {
-    case "UP":
-      return (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M0 0h24v24H0z" stroke="none" />
-          <path d="M6 9a6 6 0 1 0 12 0A6 6 0 0 0 6 9" />
-          <path d="M12 3c1.333.333 2 2.333 2 6s-.667 5.667-2 6M12 3c-1.333.333-2 2.333-2 6s.667 5.667 2 6M6 9h12M3 20h7M14 20h7M10 20a2 2 0 1 0 4 0 2 2 0 0 0-4 0M12 15v3" />
-        </svg>
-      );
-    case "DOWN":
-      return (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M0 0h24v24H0z" stroke="none" />
-          <path d="M6.528 6.536a6 6 0 0 0 7.942 7.933m2.247-1.76A6 6 0 0 0 8.29 4.284" />
-          <path d="M12 3c1.333.333 2 2.333 2 6 0 .337-.006.66-.017.968m-.55 3.473c-.333.884-.81 1.403-1.433 1.559M12 3c-.936.234-1.544 1.29-1.822 3.167m-.16 3.838C10.134 13.034 10.794 14.7 12 15M6 9h3m4 0h5M3 20h7M14 20h7M10 20a2 2 0 1 0 4 0 2 2 0 0 0-4 0M12 15v3M3 3l18 18" />
-        </svg>
-      );
-    default:
-      return (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M0 0h24v24H0z" stroke="none" />
-          <path d="M17 22v-2M9 15l6-6M11 6l.463-.536a5 5 0 0 1 7.071 7.072L18 13M13 18l-.397.534a5.068 5.068 0 0 1-7.127 0 4.972 4.972 0 0 1 0-7.071L6 11M20 17h2M2 7h2M7 2v2" />
-        </svg>
-      );
-  }
-};
+function StatusPill({ status }: { status: string }) {
+  const isUp = status.toUpperCase() === "UP";
+  const isDown = status.toUpperCase() === "DOWN";
+  const label = isUp ? "FIT" : isDown ? "MISSED" : "CHECKING";
+  const tone = isUp
+    ? "bg-noir text-pitch-white"
+    : isDown
+      ? "bg-volt text-volt-ink"
+      : "bg-muted text-secondary-foreground";
+  return (
+    <span
+      className={`inline-flex items-center justify-center rounded-full px-3 py-1 text-xs font-semibold ${tone}`}
+    >
+      {label}
+    </span>
+  );
+}
 
 export default function ProviderTable({
   backendUrl,
@@ -81,75 +44,155 @@ export default function ProviderTable({
   backendUrl: string | undefined;
 }) {
   const [providers, setProviders] = useState<Array<Provider>>([]);
+  const [errored, setErrored] = useState(false);
+  const [retryKey, setRetryKey] = useState(0);
 
   useEffect(() => {
     if (!backendUrl) return;
+    setErrored(false);
     fetch(`${backendUrl}/v1/providers`)
       .then((r) => r.json())
-      .then(setProviders)
+      .then((data) => {
+        setProviders(data);
+        setErrored(false);
+      })
       .catch(() => {
         setProviders([]);
+        setErrored(true);
       });
-  }, [backendUrl]);
+  }, [backendUrl, retryKey]);
+
+  const isEmpty = !errored && providers.length === 0;
 
   return (
     <>
-      <p className="text-center text-xl font-medium tracking-wide">
-        All our {providers.length} providers
-      </p>
-      <section className="h-full flex-1 flex-col p-8 md:flex">
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead className="w-[100px] text-center">Name</TableHead>
-              <TableHead className="text-center">Website</TableHead>
-              <TableHead className="text-center">Status</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {providers.map((provider) => (
-              <TableRow key={provider.name} className="text-center">
-                <TableCell className="font-medium">{provider.name}</TableCell>
-                <TableCell>
-                  <a
-                    className="underline"
-                    href={provider.url}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {" "}
-                    {provider.url}{" "}
-                  </a>
-                </TableCell>
-                <TableCell className="flex items-center justify-center">
-                  <TooltipProvider>
-                    <Tooltip>
-                      <TooltipTrigger>{getStatusEmoji(provider)}</TooltipTrigger>
-                      <TooltipContent>
-                        <p>
-                          Integration with{" "}
-                          <a
-                            className="underline"
-                            href={provider.url}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            {provider.url}
-                          </a>{" "}
-                          is{" "}
-                          {provider.status
-                            ? provider.status.toLowerCase()
-                            : "unknown"}
-                        </p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+      <section className="relative text-center">
+        <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
+          <div className="mx-auto flex max-w-3xl flex-col">
+            <h1 className="font-display mt-1 font-black uppercase tracking-[-0.03em] text-4xl text-foreground [font-stretch:115%] lg:text-7xl">
+              All our <span className="tabular-nums">{providers.length}</span> providers
+            </h1>{" "}
+          </div>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+            We search your shirts in all of them at the same time
+          </p>
+        </div>
       </section>
+      <section className="h-full flex-1 flex-col p-4 sm:p-8 md:flex">
+        <div className="space-y-3 md:hidden">
+          {providers.map((provider) => (
+            <div
+              key={provider.name}
+              className="rounded-lg border border-border bg-card p-4"
+            >
+              <div className="flex min-w-0 items-center justify-between gap-3">
+                <span className="truncate font-semibold text-foreground">
+                  {provider.name}
+                </span>
+                <StatusPill status={provider.status} />
+              </div>
+              <a
+                className="mt-1.5 block break-all text-sm text-kit-navy underline underline-offset-2 hover:text-stadium-ink"
+                href={provider.url}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {provider.url}
+              </a>
+            </div>
+          ))}
+        </div>
+        <div className="hidden md:block">
+          <TooltipProvider delayDuration={300}>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="w-[100px] text-center">Name</TableHead>
+                  <TableHead className="text-center">Website</TableHead>
+                  <TableHead className="text-center">Status</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {providers.map((provider) => (
+                  <TableRow key={provider.name} className="text-center">
+                    <TableCell className="font-medium text-foreground">
+                      {provider.name}
+                    </TableCell>
+                    <TableCell>
+                      <a
+                        className="text-kit-navy underline underline-offset-2 hover:text-stadium-ink"
+                        href={provider.url}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {provider.url}
+                      </a>
+                    </TableCell>
+                    <TableCell>
+                      <div className="flex items-center justify-center">
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <a
+                              href={provider.url}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                            >
+                              <StatusPill status={provider.status} />
+                            </a>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>
+                              Integration with{" "}
+                              <a
+                                className="text-foreground underline underline-offset-2"
+                                href={provider.url}
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                {provider.url}
+                              </a>{" "}
+                              is{" "}
+                              {provider.status
+                                ? provider.status.toLowerCase()
+                                : "unknown"}
+                            </p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TooltipProvider>
+        </div>
+      </section>
+      {isEmpty && (
+        <div className="flex flex-col items-center justify-center gap-2 py-12 text-center">
+          <p className="text-base font-semibold text-foreground">
+            No providers connected yet.
+          </p>
+          <p className="text-sm text-muted-foreground">Check back soon.</p>
+        </div>
+      )}
+      {errored && (
+        <div className="flex flex-col items-center justify-center gap-2 py-12 text-center">
+          <p className="text-base font-semibold text-foreground">
+            We couldn&apos;t load the providers.
+          </p>
+          <p className="text-sm text-muted-foreground">
+            Check your connection and try again.
+          </p>
+          <button
+            type="button"
+            onClick={() => setRetryKey((key) => key + 1)}
+            className="inline-flex h-11 items-center justify-center rounded-md bg-primary px-6 py-2 text-sm font-semibold text-primary-foreground transition-all duration-150 hover:bg-volt-deep active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+          >
+            Try again
+          </button>
+        </div>
+      )}
     </>
   );
 }

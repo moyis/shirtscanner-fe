@@ -38,9 +38,13 @@ test("has seo head tags", async ({ page }) => {
   expect(jsonLd).toContain("SearchAction");
 });
 
-test("providers redirects to providers page search", async ({ page }) => {
+test("providers redirects to providers page search", async ({ page, isMobile }) => {
   await page.goto("/");
-  await page.getByRole('link', { name: 'Providers' }).click();
+  if (isMobile) {
+    await page.getByLabel("Menu", { exact: true }).click();
+  }
+  const navName = isMobile ? "Mobile menu" : "Main";
+  await page.getByRole("navigation", { name: navName }).getByRole("link", { name: "Providers" }).click();
   await expect(page).toHaveURL(`/providers`);
 });
 
@@ -51,6 +55,6 @@ test('not found page exists', async ({ page }) => {
 
 test('not found page has a button that redirects to homepage', async ({ page }) => {
   await page.goto('/this-also-does-not-exists');
-  await page.getByRole('button', { name: 'Go back to homepage' }).click();
+  await page.getByRole('link', { name: 'Go back to homepage' }).click();
   await expect(page).toHaveURL(`/`);
 });

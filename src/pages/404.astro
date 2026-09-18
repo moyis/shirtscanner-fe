@@ -2,11 +2,12 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import SEOHead from "../components/SEOHead.astro";
+import Footer from "../components/Footer.astro";
 
 const base =
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50";
-const variant = "bg-primary text-primary-foreground hover:bg-primary/90";
-const size = "h-10 px-4 py-2";
+  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98]";
+const variant = "bg-primary text-primary-foreground hover:bg-volt-deep";
+const size = "h-11 px-6";
 ---
 <html lang="en">
   <head>
@@ -18,27 +19,28 @@ const size = "h-10 px-4 py-2";
   </head>
   <body>
     <Header />
-    <section class="relative text-center">
-      <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
-        <div class="mx-auto flex max-w-3xl flex-col">
-          <h1 class="mt-1 font-extrabold uppercase tracking-tighter text-4xl lg:text-7xl">
-            404 - Not Found
-          </h1>
-          <h2 class="order-first text-xl font-medium tracking-wide">
-            Ups... Something went wrong
-          </h2>
+    <main id="main">
+      <section class="relative text-center">
+        <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
+          <div class="mx-auto flex max-w-3xl flex-col">
+            <h1 class="font-display mt-1 font-black uppercase tracking-[-0.03em] text-4xl text-foreground [font-stretch:115%] lg:text-7xl">
+              404 - NOT FOUND
+            </h1>
+            <p class="mt-2 text-xl font-semibold tracking-wide text-noir">
+              Nothing scanned here.
+            </p>
+          </div>
+          <p class="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+            We could not find what you were looking for. Head back and search again.
+          </p>
         </div>
-        <p class="mx-auto mt-4 max-w-2xl text-l text-muted-foreground">
-          We were not able to find what you're looking for
-        </p>
-      </div>
-    </section>
-    <section class="relative text-center">
-      <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-24">
-        <a href="/">
-          <button class={`${base} ${variant} ${size}`}>Go back to homepage</button>
-        </a>
-      </div>
-    </section>
+      </section>
+      <section class="relative text-center">
+        <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-24">
+          <a href="/" class={`${base} ${variant} ${size}`}>Go back to homepage</a>
+        </div>
+      </section>
+    </main>
+    <Footer />
   </body>
 </html>

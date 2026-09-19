@@ -1,4 +1,6 @@
 ---
+import { Font } from "astro:assets";
+
 interface Props {
   title: string;
   description: string;
@@ -25,6 +27,9 @@ const ogImage = "https://www.shirtscanner.com/og-image.png";
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<Font cssVariable="--font-geist" preload />
+<Font cssVariable="--font-archivo" preload />
 
 <title>{title}</title>
 <meta name="description" content={description} />

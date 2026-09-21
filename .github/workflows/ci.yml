@@ -22,7 +22,7 @@ jobs:
           bun-version: latest
           bun-version-cache: true
       - name: Cache bun install
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ~/.bun/install/cache
           key: bun-install-${{ hashFiles('bun.lock') }}

@@ -2,13 +2,20 @@ import { cn } from "~/utils";
 
 const VERCEL_IMAGE_WIDTH = 300;
 const VERCEL_IMAGE_QUALITY = 75;
+const VERCEL_IMAGE_SIZES = [150, 300, 450];
+const IMAGE_LAYOUT_WIDTH = 150;
 
-function vercelImageUrl(src: string): string {
+function vercelImageUrl(src: string, width: number = VERCEL_IMAGE_WIDTH): string {
   if (typeof window === "undefined") return src;
   const host = window.location.hostname;
   const isVercel = host === "www.shirtscanner.com" || host.endsWith(".vercel.app");
   if (!isVercel) return src;
-  return `/_vercel/image?url=${encodeURIComponent(src)}&w=${VERCEL_IMAGE_WIDTH}&q=${VERCEL_IMAGE_QUALITY}`;
+  return `/_vercel/image?url=${encodeURIComponent(src)}&w=${width}&q=${VERCEL_IMAGE_QUALITY}`;
+}
+
+function vercelImageSrcSet(src: string): string | undefined {
+  if (typeof window === "undefined") return undefined;
+  return VERCEL_IMAGE_SIZES.map((width) => `${vercelImageUrl(src, width)} ${width}w`).join(", ");
 }
 
 export interface Product {
@@ -39,6 +46,8 @@ export function ProductCard({
         <div className="overflow-hidden rounded-md bg-muted shadow-[0_6px_16px_-8px_oklch(0.23_0.04_263/0.25)]">
           <img
             src={vercelImageUrl(product.imageLink)}
+            srcSet={vercelImageSrcSet(product.imageLink)}
+            sizes={`${IMAGE_LAYOUT_WIDTH}px`}
             onError={(event) => {
               if (event.currentTarget.src !== product.imageLink) {
                 event.currentTarget.src = product.imageLink;

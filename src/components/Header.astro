@@ -74,6 +74,7 @@ const links = [
 
 <script>
   import { initPostHog, capture } from "../services/posthog-client";
+  import { prefetch } from "astro:prefetch";
 
   initPostHog();
   capture("$pageview");

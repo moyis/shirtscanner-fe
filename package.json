@@ -21,7 +21,7 @@
     "@radix-ui/react-tooltip": "1.2.16",
     "astro": "^7.3.6",
     "clsx": "2.1.1",
-    "lucide-react": "1.51.0",
+    "lucide-react": "1.52.0",
     "posthog-js": "1.435.8",
     "react": "19.3.0",
     "react-dom": "19.3.0",
